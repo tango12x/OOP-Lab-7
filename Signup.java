@@ -200,17 +200,20 @@ public class Signup extends javax.swing.JFrame {
 
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed
                                              
-    AuthManager auth = new AuthManager();
+   AuthManager auth = new AuthManager();
 
     String username = UsernameTextField.getText().trim();
     String email = EmailTextField.getText().trim();
     String password = PasswordTextField.getText().trim();
-
     String role = "";
-    if (Instractorcheekbox.isSelected()) role = "instructor";
-    else if (Studentcheekbox.isSelected()) role = "student";
-    else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Please select a role!");
+
+    if (Studentcheekbox.isSelected()) {
+        role = "student";
+    } else if (Instractorcheekbox.isSelected()) {
+        role = "instructor";
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+                "Please select a role: Student or Instructor.");
         return;
     }
 
@@ -218,12 +221,12 @@ public class Signup extends javax.swing.JFrame {
 
     if (created == null) {
         javax.swing.JOptionPane.showMessageDialog(this,
-                "Signup failed! Check fields or email already exists.");
+                "Signup failed! Fields invalid or email already used.");
         return;
     }
 
     javax.swing.JOptionPane.showMessageDialog(this,
-            "Account created successfully! You can now login.");
+            "Account created successfully! You can now log in.");
 
     new Login().setVisible(true);
     this.dispose();
