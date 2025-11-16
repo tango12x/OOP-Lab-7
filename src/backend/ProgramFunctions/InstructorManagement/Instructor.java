@@ -1,19 +1,16 @@
 package backend.ProgramFunctions.InstructorManagement;
-
 import backend.ProgramFunctions.UserAccountManagement.User;
 import java.util.ArrayList;
 
-
 public class Instructor extends User {
-    ArrayList<String> createdCourses;
+    ArrayList<String> createdCourses; //RELATION BETWEEN COURSES AND INSTRUCTOR IS AGGREGATION
 
-    //CLASS CONSTRUCTOR
+    //CLASS CONSTRUCTOR IN CASE OF ID IS GIVEN
     public Instructor(String userId, String username, String email, String passwordHash) {
-        super(userId, "instructor", username, email, passwordHash);
-    }
+        super(userId, "instructor", username, email, passwordHash);}
+    //OVERLOADING CONSTRUCTOR IN CASE THE ID IS NOT GIVEN
     public Instructor( String username, String email, String passwordHash) {
-        super("instructor", username, email, passwordHash);
-    }
+        super("instructor", username, email, passwordHash);}
 
     //standard getters and setters
     public ArrayList<String> getCreatedCourses() {
