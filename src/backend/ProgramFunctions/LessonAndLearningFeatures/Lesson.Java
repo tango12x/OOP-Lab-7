@@ -1,8 +1,6 @@
 package backend.ProgramFunctions.LessonAndLearningFeatures;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 
 
@@ -58,14 +56,5 @@ public class Lesson {
         this.courseId = courseId;
     }
 
-    //string representation
-    @Override
-    public String toString() {
-        return "Lesson{" +
-                "lessonId='" + lessonId + '\'' +
-                ", title='" + title + '\'' +
-                ", published=" + published +
-                ", durationMinutes=" + durationMinutes +
-                '}';
-    }
+
 }
