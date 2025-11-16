@@ -1,20 +1,18 @@
 package backend.ProgramFunctions.StudentManagement;
-
 import backend.ProgramFunctions.UserAccountManagement.User;
 import java.util.ArrayList;
 
 
 public class Student extends User {
-    private ArrayList<String> enrolledCourses;
-    private ArrayList<ArrayList<String>> progress;
+    private ArrayList<String> enrolledCourses; //RELATION BETWEEN COURSES AND STUDENT IS AGGREGATION
+    private ArrayList<ArrayList<String>> progress; //REALTION BETWEEN PROGRESS AND STUDENT IS AGGREGATION
 
-    //CLASS CONSTRUCTOR
+    //CLASS CONSTRUCTOR IN CASE OF ID IS GIVEN
     public Student(String userId, String username, String email, String passwordHash) {
-        super(userId, "student", username, email, passwordHash);
-    }
+        super(userId, "student", username, email, passwordHash);}
+    //OVERLOADING CONSTRUCTOR IN CASE OF ID IS NOT GIVEN
     public Student(String username, String email, String passwordHash) {
-        super("student", username, email, passwordHash);
-    }
+        super("student", username, email, passwordHash);}
 
     //standard getters and setters
     public ArrayList<String> getEnrolledCourses() {
