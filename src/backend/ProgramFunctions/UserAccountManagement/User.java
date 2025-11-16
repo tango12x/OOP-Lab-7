@@ -7,26 +7,28 @@ public abstract class User {
     private String email;
     private String passwordHash;
 
-    //CLASS CONSTRUCTOR
+    //CLASS CONSTRUCTOR IN CASE THE USERID IS GIVEN
     public User(String userId, String role, String username, String email, String passwordHash) {
         this.userId = userId;
         this.role = role;
         this.username = username;
         this.email = email;
-        this.passwordHash = passwordHash;
-    }
+        this.passwordHash = passwordHash;}
+
+    //OVERLOADING CLASS CONSTRUCTOR IN CASE OF ID IS NOT GIVEN
     public User( String role, String username, String email, String passwordHash) {
         this.role = role;
         this.username = username;
         this.email = email;
-        this.passwordHash = passwordHash;
-    }
+        this.passwordHash = passwordHash;}
 
-    //standard getters
+    //standard getters and setters
     public String getUserId() { return userId; }
     public String getRole() { return role; }
     public String getUsername() { return username; }
     public String getEmail() { return email; }
     public String getPasswordHash() { return passwordHash; }
+
+
 
 }
