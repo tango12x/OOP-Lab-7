@@ -11,6 +11,9 @@ public class Course {
     private String description;
     private ArrayList<Lesson> lessons;
     private ArrayList<String> students;
+    //RELATION BETWEEN THE COURSE AND LESSON COMPOSITION
+    //RELATION BETWEEN THE COURSE AND STUDENT AGGREGATION
+    //RELATION BETWEEN THE COURSE AND INSTRUCTOR IS AGGREGATION
 
     //CLASS CONSTRUCTOR
     public Course(String courseId, String title, String instructorId, String description) {
