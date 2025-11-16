@@ -6,8 +6,16 @@ import org.json.JSONObject;
 import backend.ProgramFunctions.UserAccountManagement.User;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import backend.ProgramFunctions.UserAccountManagement.*;
+
+import backend.ProgramFunctions.InstructorManagement.Instructor;
+import backend.ProgramFunctions.StudentManagement.Student;
+import backend.ProgramFunctions.UserAccountManagement.User;
+
+
+//! student and instructor reading and writing issue stil needs to be fixed
 
 public class test {
 
@@ -21,11 +29,16 @@ public class test {
             if (!file.exists()) return users;
 
             // Read the file into a String
+            /* 
             BufferedReader br = new BufferedReader(new FileReader(file));
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) sb.append(line);
             br.close();
+            */
+            String content = new String(Files.readAllBytes(Paths.get("USERS_FILE")));
+            JSONArray jsonArray = new JSONArray(content);
+
 
             // Parse JSON array
             JSONArray arr = new JSONArray(sb.toString());

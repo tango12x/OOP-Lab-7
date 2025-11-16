@@ -21,4 +21,5 @@ public abstract class User {
     public String getUsername() { return username; }
     public String getEmail() { return email; }
     public String getPasswordHash() { return passwordHash; }
+
 }
