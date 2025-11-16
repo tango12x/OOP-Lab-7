@@ -10,9 +10,7 @@ package frontend;
  */
 public class MangeCoursesPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MangeCoursePage
-     */
+
     public MangeCoursesPage() {
         initComponents();
     }

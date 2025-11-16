@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frontend;
-
 import backend.ProgramFunctions.CourseManagement.Course;
+import backend.ProgramFunctions.StudentManagement.Student;
+
 import java.util.ArrayList;
 import backend.JsonDatabaseManager.CourseDatabaseManager;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,21 +17,35 @@ import javax.swing.table.DefaultTableModel;
  * @author ahmme
  */
 public class BrowseCoursesPage extends javax.swing.JFrame {
+
+    private ProgramService service; //create a class that controls the data base
+    private Student currentUser;
+
 public BrowseCoursesPage() {
     initComponents();
-    loadCoursesIntoTable();
+    this.service =service;
+    this.currentUser = currentUser;
+    this.setLocationRelativeTo(null);//to make the window in the center
 }
     // ===============================================
     // Load courses from JSON and fill table
     // ===============================================
     private void loadCoursesIntoTable() {
-        CourseDatabaseManager db = new CourseDatabaseManager();
-        ArrayList<Course> courses = db.loadCourses();
+    //private method only accessible within the class
+    //fetching all the data from using the service object which has the blueprint of Programsevice
+      ArrayList<Course> courses = service.getAllCoures();
 
         DefaultTableModel model = (DefaultTableModel) CoursesTable.getModel();
-        model.setRowCount(0); // Clear old rows
+        model.setRowCount(0); // Clear old rows to prevetnt duplication
 
         for (Course c : courses) {
+            if (service.findUserById(c.getInstructorId()) != null) {
+                // If the user exists, get their username to display in the table
+                instructorName = service.findUserById(c.getInstructorId()).getUsername();
+
+            }
+            String status = currentUser.isEnrolled(c.getCourseId()) ? "Enrolled" : "Not Enrolled"; // ternary statement condition? value if t: value if false
+
             model.addRow(new Object[]{
                 c.getCourseId(),
                 c.getCourseName(),
@@ -37,6 +54,9 @@ public BrowseCoursesPage() {
             });
         }
 }
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,92 +69,111 @@ public BrowseCoursesPage() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         CoursesTable = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
+        EnrollButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        // IMPORTANT: Set to dispose, not exit
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Browse All Courses");
 
+        CoursesTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CoursesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object [][] {
 
-            },
-            new String [] {
-                "Course ID", "Course Name", "Instructor", "Description"
-            }
+                },
+                new String [] {
+                        "Course ID", "Title", "Instructor", "Description", "Status"
+                }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        CoursesTable.setRowHeight(25);
+        CoursesTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(CoursesTable);
+
+        EnrollButton.setBackground(new java.awt.Color(51, 204, 0));
+        EnrollButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        EnrollButton.setForeground(new java.awt.Color(4, 3, 3));
+        EnrollButton.setText("Enroll in Selected Course");
+        EnrollButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnrollButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("All Available Courses");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(EnrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(EnrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BrowseCoursesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BrowseCoursesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BrowseCoursesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BrowseCoursesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BrowseCoursesPage().setVisible(true);
+
+    private void EnrollButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        int selectedRow =CoursesTable.getSelectedRow();
+        if(selectedRow == -1 ){
+            JOptionPane.showMessageDialog(this, "Please select a course from the table first.");
+            return;
+        }// if no rows are selected
+        String courseId = (String) CoursesTable.getValueAt(selectedRow, 0);
+        Course courseToEnroll = service.findCourseById(courseId);
+        if (courseToEnroll == null) {
+            JOptionPane.showMessageDialog(this, "Error: Selected course not found.");
+            return;
+            if (currentUser.isEnrolled(courseId)) {
+                JOptionPane.showMessageDialog(this, "You are already enrolled in this course.");
+                return;  //check if already enrolled
             }
-        });
-}
+            boolean success = service.enrollStudentInCourse(currentUser, courseToEnroll);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Successfully enrolled in " + courseToEnroll.getTitle() + "!");
+                // Refresh the table to show "Enrolled" status
+                loadCoursesIntoTable();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Enrollment failed.");
+            }
+
+            }
+        }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable CoursesTable;
-    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JButton EnrollButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
