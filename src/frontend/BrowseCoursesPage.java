@@ -4,9 +4,9 @@
  */
 package frontend;
 
-import Backend.Course;
+import backend.ProgramFunctions.CourseManagement.Course;
 import java.util.ArrayList;
-import Backend.CourseDatabaseManager;
+import backend.JsonDatabaseManager.CourseDatabaseManager;
 import javax.swing.table.DefaultTableModel;
 
 /**

@@ -1,6 +1,10 @@
 
 package backend.JsonDatabaseManager;
 
+
+import backend.ProgramFunctions.InstructorManagement.Instructor;
+import backend.ProgramFunctions.StudentManagement.Student;
+import backend.ProgramFunctions.UserAccountManagement.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

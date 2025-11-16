@@ -4,8 +4,8 @@
  */
 package frontend;
 
-import Backend.AuthManager;
-import Backend.User;
+import backend.SecurityAndValidation.AuthManager;
+import backend.ProgramFunctions.UserAccountManagement.User;
 
 /**
  *
