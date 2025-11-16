@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Student extends User {
     private ArrayList<String> enrolledCourses; //RELATION BETWEEN COURSES AND STUDENT IS AGGREGATION
-    private ArrayList<ArrayList<String>> progress; //REALTION BETWEEN PROGRESS AND STUDENT IS AGGREGATION
+    private ArrayList<ArrayList<String>> progress; //RELATION BETWEEN PROGRESS AND STUDENT IS AGGREGATION
 
     //CLASS CONSTRUCTOR IN CASE OF ID IS GIVEN
     public Student(String userId, String username, String email, String passwordHash) {
