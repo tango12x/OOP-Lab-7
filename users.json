@@ -1,0 +1,30 @@
+[
+    {
+        "role": "student",
+        "userId": "U1",
+        "email": "ali@student.com",
+        "passwordHash": "03ac674216f3e15c761ee1a5e255f0679536232bd5b4aa237c90fda5cf8bd7d3",
+        "username": "Ali"
+    },
+    {
+        "role": "instructor",
+        "userId": "U2",
+        "email": "sara@instructor.com",
+        "passwordHash": "88d4266fd4e6338d13b845fcf8a3c0e2655b68a2c9b34e2a70df36f6b9cc74f8",
+        "username": "Sara"
+    },
+    {
+        "role": "student",
+        "userId": "U3",
+        "email": "ahmmedwahba@yahoo.com",
+        "passwordHash": "f40d7f51f69edfaffa29c42910fbc6af6a822f1279162d486b4a7e11c3e0ae9b",
+        "username": "ahmed"
+    },
+    {
+        "role": "instructor",
+        "userId": "U4",
+        "email": "ahmmedwahbaa@yahoo.com",
+        "passwordHash": "f40d7f51f69edfaffa29c42910fbc6af6a822f1279162d486b4a7e11c3e0ae9b",
+        "username": "ahmed"
+    }
+]

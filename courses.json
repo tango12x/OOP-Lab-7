@@ -1,0 +1,64 @@
+[
+  {
+    "courseId": "C1",
+    "courseName": "Java Basics",
+    "instructor": "Dr. Ahmed",
+    "description": "Learn Java."
+  },
+  {
+    "courseId": "C2",
+    "courseName": "OOP Fundamentals",
+    "instructor": "Prof. Sara",
+    "description": "Understand OOP."
+  },
+  {
+    "courseId": "C3",
+    "courseName": "Databases 101",
+    "instructor": "Dr. Ali",
+    "description": "Intro to SQL."
+  },
+  {
+    "courseId": "C4",
+    "courseName": "Data Structures",
+    "instructor": "Dr. Mona",
+    "description": "Learn common data structures."
+  },
+  {
+    "courseId": "C5",
+    "courseName": "Web Development",
+    "instructor": "Eng. Karim",
+    "description": "HTML, CSS basics."
+  },
+  {
+    "courseId": "C6",
+    "courseName": "Python Programming",
+    "instructor": "Dr. Youssef",
+    "description": "Intro to Python."
+  },
+  {
+    "courseId": "C7",
+    "courseName": "Algorithms Intro",
+    "instructor": "Prof. Hany",
+    "description": "Basics of algorithms."
+  },
+  {
+    "courseId": "C8",
+    "courseName": "Networks 1",
+    "instructor": "Dr. Salma",
+    "description": "Computer networks basics."
+  },
+  {
+    "courseId": "C9",
+    "courseName": "Operating Systems",
+    "instructor": "Dr. Farouk",
+    "description": "Learn OS concepts."
+  },
+  {
+    "courseId": "C10",
+    "courseName": "Mobile App Dev",
+    "instructor": "Eng. Mariam",
+    "description": "Build simple apps."
+  }
+]
+
+]
