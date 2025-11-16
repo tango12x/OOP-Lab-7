@@ -15,13 +15,14 @@ public class Course {
     //RELATION BETWEEN THE COURSE AND STUDENT AGGREGATION
     //RELATION BETWEEN THE COURSE AND INSTRUCTOR IS AGGREGATION
 
-    //CLASS CONSTRUCTOR
+    //CLASS CONSTRUCTOR IN CASE OF DESCRIPTION IS GIVEN
     public Course(String courseId, String title, String instructorId, String description) {
         this.courseId = courseId;
         this.title = title;
         this.instructorId = instructorId;
         this.description = description;
     }
+    //OVERLOADING CONSTRUCTOR IN CASE THAT DESCRIPTION IS NOT GIVEN
     public Course(String courseId, String title, String instructorId) {
         this.courseId = courseId;
         this.title = title;
