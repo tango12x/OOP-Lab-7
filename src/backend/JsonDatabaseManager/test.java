@@ -1,15 +1,17 @@
-
 package backend.JsonDatabaseManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import backend.ProgramFunctions.UserAccountManagement.User;
+
 import java.io.*;
 import java.util.ArrayList;
+import backend.ProgramFunctions.UserAccountManagement.*;
 
-public class JsonDatabaseManager {
+public class test {
 
-    private final String USERS_FILE = "users.json";
+    private final String USERS_FILE = "data/DatabaseJSONFiles/users.json";
 
     public ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();

@@ -2,6 +2,8 @@ package Backend;
 
 import java.util.ArrayList;
 
+import backend.JsonDatabaseManager.JsonDatabaseManager;
+
 public class AuthManager {
 
     private JsonDatabaseManager db;
