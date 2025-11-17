@@ -64,5 +64,11 @@ public class Course {
         lessons.add(lesson);}
 
     //METHOD TO REMOVE LESSON
-    
+    public void removeLesson(String lessonId) {
+        if (lessonId == null || lessonId.trim().isEmpty()) return;
+        for (int i = 0; i < lessons.size(); i++) {
+            if (lessons.get(i).getLessonId().equals(lessonId)) {
+                lessons.remove(i);
+                return;}}}
+
 }
