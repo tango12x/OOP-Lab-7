@@ -43,7 +43,17 @@ public class Student extends User {
         for (String id : enrolledCourses) {
             if (id.equals(courseId)) {
                 return;}}
-        enrolledCourses.add(courseId);}
+        enrolledCourses.add(courseId);
+        progress.add(new ArrayList<>());}
+
+    private int findCourseIndex(String courseId) {
+        for (int i = 0; i < enrolledCourses.size(); i++) {
+            if (enrolledCourses.get(i).equals(courseId)) {
+                return i;}}
+        return -1;}
+
+
+
 
 
 
