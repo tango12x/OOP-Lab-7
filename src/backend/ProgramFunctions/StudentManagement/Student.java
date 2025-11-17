@@ -37,4 +37,14 @@ public class Student extends User {
         this.progress = progress;
     }
 
+    //ENROLL COURSE IF NOT ALREADY ENROLLED
+    public void enroll(String courseId) {
+        if (courseId == null || courseId.trim().isEmpty()) return;
+        for (String id : enrolledCourses) {
+            if (id.equals(courseId)) {
+                return;}}
+        enrolledCourses.add(courseId);}
+
+
+
 }
