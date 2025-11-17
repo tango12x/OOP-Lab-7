@@ -4,19 +4,31 @@
  */
 package frontend;
 
-import java.awt.Font;
+import backend.ProgramService.ProgramService;
+import backend.ProgramFunctions.UserAccountManagement.User;
+import backend.ProgramFunctions.StudentManagement.Student; // Import Student
+
+import java.awt.*;
 
 /**
  *
  * @author ahmme
  */
 public class Studenthomepage extends javax.swing.JFrame {
-
+    private ProgramService service;
+    private Student currentUser;
     /**
      * Creates new form Studenthomepage
      */
-    public Studenthomepage() {
+
+    public Studenthomepage(ProgramService service, User user) {
         initComponents();
+        this.service = service;
+        this.currentUser = (Student) user; // Cast and store
+        this.setLocationRelativeTo(null); // Center window
+
+        // Personalize the welcome message
+        jLabel2.setText("Welcome, " + currentUser.getUsername() + "!");
     }
 
     /**
@@ -26,10 +38,10 @@ public class Studenthomepage extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
-        javax.swing.JButton BrowseCoursesButton = new javax.swing.JButton();
-        javax.swing.JButton EnrollCoursesButton = new javax.swing.JButton();
+         jLabel1 = new javax.swing.JLabel();
+         jLabel2 = new javax.swing.JLabel();
+         BrowseCoursesButton = new javax.swing.JButton();
+         EnrollCoursesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,36 +101,24 @@ public class Studenthomepage extends javax.swing.JFrame {
 
     private void BrowseCoursesButtonActionPerformed(java.awt.event.ActionEvent evt) {
     new BrowseCoursesPage().setVisible(true);
-    this.dispose();
+
     }
 
     private void EnrollCoursesButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    new EnrollCoursesPage().setVisible(true);
-    this.dispose();
-    }
+    new EnrollCoursesPage(service, currentUser).setVisible(true);
 
+    }
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Go back to Login screen
+        new Login(service).setVisible(true);
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */
-    static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Studenthomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Studenthomepage().setVisible(true));
-    }
+    private javax.swing.JButton BrowseCoursesButton;
+    private javax.swing.JButton EnrollCoursesButton;
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
 }

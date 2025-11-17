@@ -19,6 +19,7 @@ public class Instructorhomepage extends javax.swing.JFrame {
     /**
      * Creates new form Instructorhomepage
      */
+
     public Instructorhomepage(ProgramService service, User user) {
         initComponents();
         this.service = service;
@@ -119,7 +120,7 @@ public class Instructorhomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageCoursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCoursesButtonActionPerformed
-        new MangeCoursesPage().setVisible(true);
+        new MangeCoursesPage(service,currentUser).setVisible(true);
     //this.dispose();
     }//GEN-LAST:event_ManageCoursesButtonActionPerformed
 
