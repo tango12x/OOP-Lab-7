@@ -24,7 +24,6 @@ public class UsersDatabaseManager {
         try {
             File file = new File(USERS_FILE);
             String content = Files.readString(Paths.get(USERS_FILE));
-            System.out.println(content);
             this.users = new JSONArray(content);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,9 +51,11 @@ public class UsersDatabaseManager {
         for (int i = 0; i < this.users.length(); i++) {
             JSONObject obj = this.users.getJSONObject(i);
             if (obj.getString("userId").equals(userId)) {
+                System.out.println("Found user at index: " + i);
                 return i; // Return the index if found
             }
         }
+        System.out.println("User not found: " + userId);
         return -1; // Return -1 if not found
     }
 
@@ -96,8 +97,8 @@ public class UsersDatabaseManager {
         return user;
     }
 
-    // METHOD TO ADD A USER (USED AT SIGNUP FUNCTIONALITY ONLY)
-    public void addUser(User newUser) {
+    // METHOD TO ADD A USER (USED AT SIGNUP FUNCTIONALITY ONLY) AND RETURN THE GENERATED ID
+    public String addUser(User newUser) {
         try {
             JSONObject obj = new JSONObject();
             obj.put("userId", generateId());
@@ -115,8 +116,10 @@ public class UsersDatabaseManager {
             }
 
             this.users.put(obj);
+            return obj.getString("userId");
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -125,6 +128,7 @@ public class UsersDatabaseManager {
         int userIndex = SearchUserIndex(updatedUser.getUserId());
         if (userIndex == -1) {
             addUser(updatedUser);
+            System.out.println("User not found, adding new user.");
             return;
         }
         //! conversion to Jsonarray must be tested
@@ -137,6 +141,7 @@ public class UsersDatabaseManager {
                 obj.put("progress", ((Student) updatedUser).getProgress() == null ? 
                  new ArrayList<ArrayList<String>>() : JsonDatabaseManager.toJSONArrayOfLists(((Student) updatedUser).getProgress()));
             } else if (updatedUser.getRole().equals("instructor")) {
+                System.out.println("Updating instructor created courses");
                 obj.put("createdCourses", ((Instructor) updatedUser).getCreatedCourses() == null ? 
                  new ArrayList<String>() : JsonDatabaseManager.toJSONArray(((Instructor) updatedUser).getCreatedCourses()));
             }
@@ -154,6 +159,7 @@ public class UsersDatabaseManager {
             FileWriter writer = new FileWriter(USERS_FILE);
             writer.write(this.users.toString(4)); // pretty print
             writer.close();
+            System.out.println("Users saved successfully to file.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -161,7 +167,7 @@ public class UsersDatabaseManager {
 
     // METHOD TO GENERATE A UNIQUE ID
     public String generateId() {
-        return String.format("%d", this.users.length() + 1);
+        return "U" + String.format("%d", this.users.length() + 1);
     }
 
     // METHOD TO RETURN ALL USERS JSON ARRAY (FOR VALIDATION PURPOSES)
@@ -176,11 +182,19 @@ public class UsersDatabaseManager {
         User user2 = new Student("Gamal", "email2","passwordHash2");
         User user3 = new Instructor("3aa", "email2","passwordHash2");
         User user4 = new Instructor("bebe", "email2","passwordHash2");
-        
+        ArrayList<String> courses = new ArrayList<String>();
+        courses.add("C1");
+        courses.add("C13");
+        courses.add("C3");
         usersDB.addUser(user1);
         usersDB.addUser(user2);
         usersDB.addUser(user3);
         usersDB.addUser(user4);
+        usersDB.SaveUsersToFile();
+
+        usersDB = new UsersDatabaseManager();
+        ((Instructor) user3).setCreatedCourses(courses);
+        usersDB.update(user3);
         usersDB.SaveUsersToFile();
     }
 }

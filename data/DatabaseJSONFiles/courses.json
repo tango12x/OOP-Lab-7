@@ -1,62 +1,152 @@
 [
-  {
-    "courseId": "C1",
-    "courseName": "Java Basics",
-    "instructor": "Dr. Ahmed",
-    "description": "Learn Java."
-  },
-  {
-    "courseId": "C2",
-    "courseName": "OOP Fundamentals",
-    "instructor": "Prof. Sara",
-    "description": "Understand OOP."
-  },
-  {
-    "courseId": "C3",
-    "courseName": "Databases 101",
-    "instructor": "Dr. Ali",
-    "description": "Intro to SQL."
-  },
-  {
-    "courseId": "C4",
-    "courseName": "Data Structures",
-    "instructor": "Dr. Mona",
-    "description": "Learn common data structures."
-  },
-  {
-    "courseId": "C5",
-    "courseName": "Web Development",
-    "instructor": "Eng. Karim",
-    "description": "HTML, CSS basics."
-  },
-  {
-    "courseId": "C6",
-    "courseName": "Python Programming",
-    "instructor": "Dr. Youssef",
-    "description": "Intro to Python."
-  },
-  {
-    "courseId": "C7",
-    "courseName": "Algorithms Intro",
-    "instructor": "Prof. Hany",
-    "description": "Basics of algorithms."
-  },
-  {
-    "courseId": "C8",
-    "courseName": "Networks 1",
-    "instructor": "Dr. Salma",
-    "description": "Computer networks basics."
-  },
-  {
-    "courseId": "C9",
-    "courseName": "Operating Systems",
-    "instructor": "Dr. Farouk",
-    "description": "Learn OS concepts."
-  },
-  {
-    "courseId": "C10",
-    "courseName": "Mobile App Dev",
-    "instructor": "Eng. Mariam",
-    "description": "Build simple apps."
-  }
+    {
+        "description": "Learn Java.",
+        "students": [],
+        "title": "Java Basics",
+        "courseId": "C1",
+        "lessons": [
+            {
+                "optionalResources": [],
+                "lessonId": "L1",
+                "title": "Lesson 1",
+                "courseId": "C11",
+                "content": "Content 1"
+            },
+            {
+                "optionalResources": [],
+                "lessonId": "L2",
+                "title": "Lesson 2",
+                "courseId": "C11",
+                "content": "Content 2"
+            }
+        ],
+        "instructorId": "Dr. Ahmed"
+    },
+    {
+        "description": "Understand OOP.",
+        "students": [],
+        "title": "OOP Fundamentals",
+        "courseId": "C2",
+        "lessons": [],
+        "instructorId": "Prof. Sara"
+    },
+    {
+        "description": "Intro to SQL.",
+        "students": [],
+        "title": "Databases 101",
+        "courseId": "C3",
+        "lessons": [],
+        "instructorId": "Dr. Ali"
+    },
+    {
+        "description": "Learn common data structures.",
+        "students": [],
+        "title": "Data Structures",
+        "courseId": "C4",
+        "lessons": [],
+        "instructorId": "Dr. Mona"
+    },
+    {
+        "description": "HTML, CSS basics.",
+        "students": [],
+        "title": "Web Development",
+        "courseId": "C5",
+        "lessons": [],
+        "instructorId": "Eng. Karim"
+    },
+    {
+        "description": "Intro to Python.",
+        "students": [],
+        "title": "Python Programming",
+        "courseId": "C6",
+        "lessons": [],
+        "instructorId": "Dr. Youssef"
+    },
+    {
+        "description": "Basics of algorithms.",
+        "students": [],
+        "title": "Algorithms Intro",
+        "courseId": "C7",
+        "lessons": [],
+        "instructorId": "Prof. Hany"
+    },
+    {
+        "description": "Computer networks basics.",
+        "students": [],
+        "title": "Networks 1",
+        "courseId": "C8",
+        "lessons": [],
+        "instructorId": "Dr. Salma"
+    },
+    {
+        "description": "Learn OS concepts.",
+        "students": [],
+        "title": "Operating Systems",
+        "courseId": "C9",
+        "lessons": [],
+        "instructorId": "Dr. Farouk"
+    },
+    {
+        "description": "Build simple apps.",
+        "students": [],
+        "title": "Mobile App Dev",
+        "courseId": "C10",
+        "lessons": [],
+        "instructorId": "Eng. Mariam"
+    },
+    {
+        "description": "Description 11",
+        "students": [],
+        "title": "Course 11",
+        "courseId": "C11",
+        "lessons": [],
+        "instructorId": "I1"
+    },
+    {
+        "description": "Description 11",
+        "students": [],
+        "title": "Course 11",
+        "courseId": "C12",
+        "instructorId": "I1",
+        "lessons": []
+    },
+    {
+        "description": "Description 11",
+        "students": [],
+        "title": "Course 11",
+        "courseId": "C13",
+        "instructorId": "I1",
+        "lessons": []
+    },
+    {
+        "description": "Learn Java.",
+        "students": [],
+        "title": "Java Basics",
+        "courseId": "C1",
+        "lessons": [
+            {
+                "optionalResources": [],
+                "lessonId": "L1",
+                "title": "Lesson 1",
+                "courseId": "C11",
+                "content": "Content 1"
+            },
+            {
+                "optionalResources": [],
+                "lessonId": "L2",
+                "title": "Lesson 2",
+                "courseId": "C11",
+                "content": "Content 2"
+            }
+        ],
+        "instructorId": "Dr. Ahmed"
+    },
+    {
+        "description": "Description 11",
+        "students": [],
+        "title": "Course 11",
+        "courseId": "C15",
+        "instructorId": "I1",
+        "lessons": []
+    }
 ]

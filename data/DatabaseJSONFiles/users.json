@@ -31,7 +31,7 @@
         "role": "student",
         "enrolledCourses": [],
         "progress": [],
-        "userId": "5",
+        "userId": "U5",
         "email": "email",
         "passwordHash": "passwordHash",
         "username": "AYmen"
@@ -40,7 +40,7 @@
         "role": "student",
         "enrolledCourses": [],
         "progress": [],
-        "userId": "6",
+        "userId": "U6",
         "email": "email2",
         "passwordHash": "passwordHash2",
         "username": "Gamal"
@@ -48,7 +48,7 @@
     {
         "role": "instructor",
         "createdCourses": [],
-        "userId": "7",
+        "userId": "U7",
         "email": "email2",
         "passwordHash": "passwordHash2",
         "username": "3aa"
@@ -56,9 +56,143 @@
     {
         "role": "instructor",
         "createdCourses": [],
-        "userId": "8",
+        "userId": "U8",
         "email": "email2",
         "passwordHash": "passwordHash2",
         "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U9",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U10",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U11",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U12",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U13",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U14",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U15",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U16",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U17",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U18",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U19",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U20",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U21",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U22",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U23",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U24",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
     }
 ]

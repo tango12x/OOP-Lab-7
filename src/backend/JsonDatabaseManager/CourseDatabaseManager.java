@@ -10,6 +10,7 @@ import backend.ProgramFunctions.StudentManagement.Student;
 import backend.ProgramFunctions.LessonAndLearningFeatures.Lesson;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class CourseDatabaseManager {
         try {
             File file = new File(COURSES_FILE);
             String content = Files.readString(Paths.get(COURSES_FILE));
-            System.out.println(content);
             System.out.println("Users loaded successfully.");
             this.courses = new JSONArray(content);
             System.out.println("Users loaded successfully2.");
@@ -89,8 +89,9 @@ public class CourseDatabaseManager {
         return course;
     }
 
-    // METHOD TO ADD A COURSE 
-    public void addCourse(Course newCourse) {
+    // METHOD TO ADD A COURSE and RETURN THE GENERATED ID (USED AT COURSE CREATION
+    // FUNCTIONALITY ONLY)
+    public String addCourse(Course newCourse) {
         try {
             JSONObject obj = new JSONObject();
             obj.put("courseId", generateId());
@@ -104,8 +105,10 @@ public class CourseDatabaseManager {
             obj.put("students", newCourse.getStudents() == null ? new ArrayList<String>()
                     : JsonDatabaseManager.toJSONArray(newCourse.getStudents()));
             this.courses.put(obj);
+            return obj.getString("courseId");
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -119,8 +122,7 @@ public class CourseDatabaseManager {
         try {
             JSONObject obj = this.courses.getJSONObject(courseIndex);
             // optional fields if exit now
-            obj.put("enrolledCourses", new ArrayList<String>());
-            obj.put("lessons", updatedCourse.getLessons() == null ? new ArrayList<String>()
+            obj.put("lessons", updatedCourse.getLessons() == null ? new ArrayList<Lesson>()
                     : LessonToJSON(updatedCourse.getLessons()));
             obj.put("students", updatedCourse.getStudents() == null ? new ArrayList<String>()
                     : JsonDatabaseManager.toJSONArray(updatedCourse.getStudents()));
@@ -157,7 +159,7 @@ public class CourseDatabaseManager {
 
     // METHOD TO GENERATE A UNIQUE ID
     public String generateId() {
-        return String.format("%d", this.courses.length() + 1);
+        return "C"+String.format("%d", this.courses.length() + 1);
     }
 
     //Convert JSONArray to ArrayList<Lesson>
@@ -197,14 +199,16 @@ public class CourseDatabaseManager {
     public static void main(String[] args) {
         //test for all methods here
         CourseDatabaseManager coursesDB = new CourseDatabaseManager();
-        Course course1 = new Course("Java Programming", "1", "Learn Java from scratch");
-        coursesDB.addCourse(course1);
+        Course course = coursesDB.getCourse("C1");
+        ArrayList<Lesson> lessons = new ArrayList<Lesson>();
+        lessons.add(new Lesson("L1", "Lesson 1", "C11", "Content 1"));
+        lessons.add(new Lesson("L2", "Lesson 2", "C11", "Content 2"));
+        course.setLessons(lessons);
+        coursesDB.update(course);
+        Course newCourse = new Course("Course 11", "I1", "Description 11");
+        coursesDB.addCourse(newCourse);
         coursesDB.SaveCoursesToFile();
-        
-
-
 
     }
-
-
+    
 }

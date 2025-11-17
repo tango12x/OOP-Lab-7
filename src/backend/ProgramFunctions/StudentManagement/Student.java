@@ -11,9 +11,13 @@ public class Student extends User {
     //CLASS CONSTRUCTOR
     public Student(String userId, String username, String email, String passwordHash) {
         super(userId, "student", username, email, passwordHash);
+        this.enrolledCourses = new ArrayList<String>();
+        this.progress = new ArrayList<ArrayList<String>>();
     }
     public Student(String username, String email, String passwordHash) {
         super("student", username, email, passwordHash);
+        this.enrolledCourses = new ArrayList<String>();
+        this.progress = new ArrayList<ArrayList<String>>();
     }
 
     //standard getters and setters

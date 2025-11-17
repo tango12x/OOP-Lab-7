@@ -16,11 +16,13 @@ public class Lesson {
         this.title = title;
         this.courseId = courseId;
         this.content = content;
+        this.optionalResources = new ArrayList<String>();
     }
     public Lesson(String lessonId, String title, String courseId) {
         this.lessonId = lessonId;
         this.title = title;
         this.courseId = courseId;
+        this.optionalResources = new ArrayList<String>();
     }
 
 

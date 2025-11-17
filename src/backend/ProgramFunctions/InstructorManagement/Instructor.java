@@ -10,9 +10,11 @@ public class Instructor extends User {
     //CLASS CONSTRUCTOR
     public Instructor(String userId, String username, String email, String passwordHash) {
         super(userId, "instructor", username, email, passwordHash);
+        this.createdCourses = new ArrayList<String>();
     }
     public Instructor( String username, String email, String passwordHash) {
         super("instructor", username, email, passwordHash);
+        this.createdCourses = new ArrayList<String>();
     }
 
     //standard getters and setters

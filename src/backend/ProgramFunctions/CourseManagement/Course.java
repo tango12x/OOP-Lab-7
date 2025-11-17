@@ -18,11 +18,15 @@ public class Course {
         this.title = title;
         this.instructorId = instructorId;
         this.description = description;
+        this.lessons = new ArrayList<Lesson>();
+        this.students = new ArrayList<String>();
     }
-    public Course(String courseId, String title, String instructorId) {
-        this.courseId = courseId;
+    public Course(String title, String instructorId, String description) {
         this.title = title;
         this.instructorId = instructorId;
+        this.description = description;
+        this.lessons = new ArrayList<Lesson>();
+        this.students = new ArrayList<String>();
     }
 
     //standard getters and setters
