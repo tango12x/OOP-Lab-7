@@ -46,13 +46,23 @@ public class Student extends User {
         enrolledCourses.add(courseId);
         progress.add(new ArrayList<>());}
 
+    // FIND THE COURSE INDEX IN ENROLLED COURSE USING COURSE ID
     private int findCourseIndex(String courseId) {
         for (int i = 0; i < enrolledCourses.size(); i++) {
             if (enrolledCourses.get(i).equals(courseId)) {
                 return i;}}
         return -1;}
 
-
+    //MARK LESSON AS COMPLETE
+    public void markLessonComplete(String courseId, String lessonId) {
+        if (courseId == null || lessonId == null) return;
+        if (courseId.trim().isEmpty() || lessonId.trim().isEmpty()) return;
+        int index = findCourseIndex(courseId);
+        if (index == -1) {
+            return;}
+        ArrayList<String> completedLessons = progress.get(index);
+        if (!completedLessons.contains(lessonId)) {
+            completedLessons.add(lessonId);}}
 
 
 
