@@ -27,4 +27,9 @@ public class Validator {
         for (char c : desc.toCharArray()) {
             if (forbidden.indexOf(c) != -1) return false;}
         return true;}
+
+    //lesson title validation
+    public static boolean isValidLessonTitle(String title) {
+        return isFilled(title) && title.length() >= 3 && title.length() <= 150;}
+    
 }
