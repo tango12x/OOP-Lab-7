@@ -39,4 +39,17 @@ public class Validator {
         for (char c : title.toCharArray()) {
             if (forbidden.indexOf(c) != -1) return false;}
         return true;}
+
+    //username validation
+    public static boolean isValidUsername(String username) {
+        if (!isFilled(username)) return false;
+        if (username.length() < 3 || username.length() > 20) return false;
+        for (char c : username.toCharArray()) {
+            if (!((c >= 'a' && c <= 'z') ||
+                    (c >= 'A' && c <= 'Z') ||
+                    (c >= '0' && c <= '9') ||
+                    c == '_' || c == '-')) {
+                return false;}}
+        return true;
+    }
 }
