@@ -7,9 +7,15 @@ public class Validator {
         return value != null && !value.trim().isEmpty();
     }
 
-    // Email must contain @ and .
+    // Email validation
     public static boolean isValidEmail(String email) {
         if (!isFilled(email)) return false;
-        return email.contains("@") && email.contains(".");
-    }
+        int atIndex = email.indexOf('@');
+        if (atIndex <= 0 || atIndex == email.length() - 1) return false;
+        String localPart = email.substring(0, atIndex);
+        String domainPart = email.substring(atIndex + 1);
+        if (localPart.isEmpty() || domainPart.isEmpty()) return false;
+        int dotIndex = domainPart.indexOf('.');
+        if (dotIndex <= 0 || dotIndex == domainPart.length() - 1) return false;
+        return domainPart.substring(dotIndex + 1).length() >= 2;}
 }
