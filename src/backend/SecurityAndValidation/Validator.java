@@ -56,4 +56,11 @@ public class Validator {
     public static boolean passwordsMatch(String pass1, String pass2) {
         return pass1 != null && pass1.equals(pass2);
     }
+
+    //role validation
+    public static boolean isValidRole(String role) {
+        if (!isFilled(role)) return false;
+        String lower = role.toLowerCase().trim();
+        return "student".equals(lower) || "instructor".equals(lower);
+    }
 }
