@@ -4,10 +4,12 @@
  */
 package frontend;
 import backend.ProgramFunctions.CourseManagement.Course;
+import backend.ProgramFunctions.InstructorManagement.Instructor;
 import backend.ProgramFunctions.StudentManagement.Student;
 
 import java.util.ArrayList;
 import backend.JsonDatabaseManager.CourseDatabaseManager;
+import backend.ProgramService.ProgramService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -33,7 +35,7 @@ public BrowseCoursesPage() {
     private void loadCoursesIntoTable() {
     //private method only accessible within the class
     //fetching all the data from using the service object which has the blueprint of Programsevice
-      ArrayList<Course> courses = service.getAllCoures();
+      ArrayList<Course> courses = service.getAllCourses();
 
         DefaultTableModel model = (DefaultTableModel) CoursesTable.getModel();
         model.setRowCount(0); // Clear old rows to prevetnt duplication
@@ -41,15 +43,15 @@ public BrowseCoursesPage() {
         for (Course c : courses) {
             if (service.findUserById(c.getInstructorId()) != null) {
                 // If the user exists, get their username to display in the table
-                instructorName = service.findUserById(c.getInstructorId()).getUsername();
+                String instructorName = service.findUserById(c.getInstructorId()).getUsername();
 
             }
             String status = currentUser.isEnrolled(c.getCourseId()) ? "Enrolled" : "Not Enrolled"; // ternary statement condition? value if t: value if false
 
             model.addRow(new Object[]{
                 c.getCourseId(),
-                c.getCourseName(),
-                c.getInstructorName(),
+                c.getTitle(),
+                c.getInstructorId(),
                 c.getDescription()
             });
         }
@@ -150,7 +152,7 @@ public BrowseCoursesPage() {
         Course courseToEnroll = service.findCourseById(courseId);
         if (courseToEnroll == null) {
             JOptionPane.showMessageDialog(this, "Error: Selected course not found.");
-            return;
+            return;}
             if (currentUser.isEnrolled(courseId)) {
                 JOptionPane.showMessageDialog(this, "You are already enrolled in this course.");
                 return;  //check if already enrolled
@@ -167,7 +169,7 @@ public BrowseCoursesPage() {
             }
 
             }
-        }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

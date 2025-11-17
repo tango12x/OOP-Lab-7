@@ -1,106 +1,53 @@
 package backend.ProgramFunctions.LessonAndLearningFeatures;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
-//! Ai generated code below just to fill the file, not checked for correctness yet 
-
-
+/**
+ * Requirement 5: Implement the Lesson class (Corrected Version).
+ * This is a simple data object.
+ * UPDATED: Includes toString() for better JList display.
+ */
 public class Lesson {
-    private final String lessonId;
+    private String lessonId;
     private String title;
-    private String description;
     private String content;
-    private final LocalDateTime createdDate;
-    private LocalDateTime lastModified;
-    private final List<String> tags;
-    private int durationMinutes;
-    private boolean published;
+    private ArrayList<String> resources; // List of links or file names
 
-    public Lesson(String lessonId, String title, String description) {
+    public Lesson(String lessonId, String title, String content) {
         this.lessonId = lessonId;
         this.title = title;
-        this.description = description;
-        this.content = "";
-        this.createdDate = LocalDateTime.now();
-        this.lastModified = LocalDateTime.now();
-        this.tags = new ArrayList<>();
-        this.durationMinutes = 0;
-        this.published = false;
+        this.content = content;
+        this.resources = new ArrayList<>();
     }
 
-    public String getLessonId() {
-        return lessonId;
+    // --- Getters ---
+    public String getLessonId() { return lessonId; }
+    public String getTitle() { return title; }
+    public String getContent() { return content; }
+    public ArrayList<String> getResources() { return resources; }
+
+    // --- Methods ---
+    public void addResource(String resource) {
+        if (resource != null && !resource.isEmpty()) {
+            this.resources.add(resource);
+        }
     }
 
-    public String getTitle() {
-        return title;
-    }
-
+    // Setters (for editing)
     public void setTitle(String title) {
         this.title = title;
-        this.lastModified = LocalDateTime.now();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-        this.lastModified = LocalDateTime.now();
-    }
-
-    public String getContent() {
-        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
-        this.lastModified = LocalDateTime.now();
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public LocalDateTime getLastModified() {
-        return lastModified;
-    }
-
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public void addTag(String tag) {
-        tags.add(tag);
-    }
-
-    public int getDurationMinutes() {
-        return durationMinutes;
-    }
-
-    public void setDurationMinutes(int durationMinutes) {
-        this.durationMinutes = durationMinutes;
-    }
-
-    public boolean isPublished() {
-        return published;
-    }
-
-    public void setPublished(boolean published) {
-        this.published = published;
-        this.lastModified = LocalDateTime.now();
-    }
-
+    /**
+     * This controls how the object appears in a JList.
+     * @return The title of the lesson.
+     */
     @Override
     public String toString() {
-        return "Lesson{" +
-                "lessonId='" + lessonId + '\'' +
-                ", title='" + title + '\'' +
-                ", published=" + published +
-                ", durationMinutes=" + durationMinutes +
-                '}';
+        return this.title; // Display the title in lists
     }
 }

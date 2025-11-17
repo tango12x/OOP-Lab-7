@@ -57,8 +57,8 @@ public class CourseDatabaseManager {
             for (Course c : courses) {
                 JSONObject obj = new JSONObject();
                 obj.put("courseId", c.getCourseId());
-                obj.put("courseName", c.getCourseName());
-                obj.put("instructor", c.getInstructorName()); // FIXED
+                obj.put("courseName", c.getTitle());
+                obj.put("instructor", c.getInstructorId()); // FIXED
                 obj.put("description", c.getDescription());
 
                 arr.put(obj);
