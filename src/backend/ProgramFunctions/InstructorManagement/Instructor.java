@@ -30,6 +30,9 @@ public class Instructor extends User {
         if (!createdCourses.contains(courseId)) {
             createdCourses.add(courseId);}}
 
+    //REMOVE COURSE FROM CREATED COURSE LIST
+    public void removeCreatedCourse(String courseId) {
+        if (courseId != null && !courseId.trim().isEmpty()) {
+            createdCourses.remove(courseId); }}
     
-
 }
