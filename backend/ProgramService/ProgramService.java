@@ -105,7 +105,11 @@ public Course findCourseById(String courseId){
 return null;
 }// method to find course by id
 
-public Course creatCourse(String title, String description, String instructorId){
+    public ArrayList<Course> getAllCourses() {
+        return this.allCourses;
+    }
+
+public Course creatCourse(String title, String description, Instructor instructor){
         if(!Validator.isFilled(title) || !Validator.isFilled(description)){
             return null;
         }
@@ -124,6 +128,9 @@ public Course creatCourse(String title, String description, String instructorId)
             }
     String newCourseId = "C" + (maxId + 1);
 
+//    Course newCourse = new Course(newCourseId, title, description, instructor.getUserId());
+//    this.allCourses.add(newCourse);
+//    instructor.addCreatedCourse(newCourseId);
     Course newCourse = new Course(newCourseId, title, description, instructor.getUserId());
     this.allCourses.add(newCourse);
     instructor.addCreatedCourse(newCourseId);
@@ -175,6 +182,7 @@ public Course creatCourse(String title, String description, String instructorId)
         student.markLessonComplete(courseId, lessonId);
         saveData();
     }
+
 }
 
 
