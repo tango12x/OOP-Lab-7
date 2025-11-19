@@ -157,7 +157,7 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         } else {
             System.out.println("Instructor logged in");
-            InstructorDashboard frame = new InstructorDashboard();
+            InstructorDashboard frame = new InstructorDashboard(found.getUserId(), found.getUsername());
             frame.setVisible(true);
             frame.setLocationRelativeTo(null);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

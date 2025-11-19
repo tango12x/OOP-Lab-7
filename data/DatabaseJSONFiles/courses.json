@@ -59,7 +59,7 @@
     },
     {
         "description": "Intro to Python.",
-        "students": [],
+        "students": ["U27"],
         "title": "Python Programming",
         "courseId": "C6",
         "lessons": [],

@@ -61,7 +61,7 @@
     },
     {
         "role": "instructor",
-        "createdCourses": [],
+        "createdCourses": ["C3","C7"],
         "userId": "U8",
         "email": "email2",
         "passwordHash": "passwordHash2",
@@ -237,14 +237,28 @@
     },
     {
         "role": "student",
-        "enrolledCourses": ["C1"],
-        "progress": [[
-            "L1",
-            "L2"
-        ]],
+        "enrolledCourses": [
+            "C1",
+            "C6"
+        ],
+        "progress": [
+            [
+                "L1",
+                "L2"
+            ],
+            []
+        ],
         "userId": "U27",
         "email": "galal@gmail.com",
         "passwordHash": "f11feb40fed11e44d9999326dab346c527bde1da519e9dfa963db429068f15d9",
         "username": "GalalTaman"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U28",
+        "email": "ahmed@gmail.com",
+        "passwordHash": "e6d3efc6abfd85ceacedc20ecbb866e564fe16742930c48f8618bff70c5028e6",
+        "username": "ahmed"
     }
 ]
