@@ -1,7 +1,10 @@
 [
     {
         "description": "Learn Java.",
-        "students": ["U25"],
+        "students": [
+            "U25",
+            "U27"
+        ],
         "title": "Java Basics",
         "courseId": "C1",
         "lessons": [

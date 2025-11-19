@@ -157,9 +157,10 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         } else {
             System.out.println("Instructor logged in");
-            // InstructorDashboard frame = new InstructorDashboard();
-            // frame.setVisible(true);
-            // frame.setLocationRelativeTo(null);
+            InstructorDashboard frame = new InstructorDashboard();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.dispose();
         }
     }//GEN-LAST:event_LoginButtonActionPerformed

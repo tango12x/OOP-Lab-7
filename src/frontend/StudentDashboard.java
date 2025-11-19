@@ -414,9 +414,10 @@ public class StudentDashboard extends javax.swing.JFrame {
                 "Confirm Logout", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            // TODO: Implement API call for logout or save and close the program
             // Suggested function: AuthService.logout(currentStudentId)
-            //put here the login gui
+            Login frame = new Login();
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
 
             // Close the dashboard
             this.dispose();

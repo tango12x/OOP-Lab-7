@@ -234,5 +234,17 @@
         "email": "ayman@gmail.com",
         "passwordHash": "c92ac652abe8b01096afe71e1aace892f09fbdbe8ac17836bbb5f4a4f55c13a2",
         "username": "galal"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": ["C1"],
+        "progress": [[
+            "L1",
+            "L2"
+        ]],
+        "userId": "U27",
+        "email": "galal@gmail.com",
+        "passwordHash": "f11feb40fed11e44d9999326dab346c527bde1da519e9dfa963db429068f15d9",
+        "username": "GalalTaman"
     }
 ]
