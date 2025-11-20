@@ -1,0 +1,108 @@
+[
+    {
+        "description": "Learn Java.",
+        "students": [
+            "U25",
+            "U27"
+        ],
+        "title": "Java Basics",
+        "courseId": "C1",
+        "lessons": [
+            {
+                "optionalResources": [],
+                "lessonId": "L1",
+                "title": "Lesson 1",
+                "courseId": "C11",
+                "content": "Content 1"
+            },
+            {
+                "optionalResources": [],
+                "lessonId": "L2",
+                "title": "Lesson 2",
+                "courseId": "C11",
+                "content": "Content 2"
+            }
+        ],
+        "instructorId": "U2"
+    },
+    {
+        "description": "Understand OOP.",
+        "students": ["U25"],
+        "title": "OOP Fundamentals",
+        "courseId": "C2",
+        "lessons": [],
+        "instructorId": "U4"
+    },
+    {
+        "description": "Intro to SQL.",
+        "students": ["U25"],
+        "title": "Databases 101",
+        "courseId": "C3",
+        "lessons": [],
+        "instructorId": "U8"
+    },
+    {
+        "description": "Learn common data structures.",
+        "students": [],
+        "title": "Data Structures",
+        "courseId": "C4",
+        "lessons": [],
+        "instructorId": "U2"
+    },
+    {
+        "description": "HTML, CSS basics.",
+        "students": [],
+        "title": "Web Development",
+        "courseId": "C5",
+        "lessons": [],
+        "instructorId": "U2"
+    },
+    {
+        "description": "Intro to Python.",
+        "students": ["U27"],
+        "title": "Python Programming",
+        "courseId": "C6",
+        "lessons": [],
+        "instructorId": "U2"
+    },
+    {
+        "description": "Basics of algorithms.",
+        "students": ["U25"],
+        "title": "Algorithms Intro",
+        "courseId": "C7",
+        "lessons": [],
+        "instructorId": "U8"
+    },
+    {
+        "description": "Computer networks basics.",
+        "students": [],
+        "title": "Networks 1",
+        "courseId": "C8",
+        "lessons": [],
+        "instructorId": "U4"
+    },
+    {
+        "description": "Learn OS concepts.",
+        "students": ["U25"],
+        "title": "Operating Systems",
+        "courseId": "C9",
+        "lessons": [],
+        "instructorId": "U2"
+    },
+    {
+        "description": "Build simple apps.",
+        "students": ["U25"],
+        "title": "Mobile App Dev",
+        "courseId": "C10",
+        "lessons": [],
+        "instructorId": "U2"
+    },
+    {
+        "description": "Description 11",
+        "students": ["U25"],
+        "title": "Course 11",
+        "courseId": "C11",
+        "lessons": [],
+        "instructorId": "U2"
+    }
+]

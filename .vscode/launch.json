@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "login",
+            "request": "launch",
+            "mainClass": "login",
+            "projectName": "OOP-Lab-7_434d5622"
+        },
+        {
+            "type": "java",
+            "name": "Run Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "classPaths": [
+                "${workspaceFolder}/out",
+                "${workspaceFolder}/lib/org.json-1.6-20240205.jar"
+            ],
+            "preLaunchTask": "Build Current File"
+        }
+    ]
+}

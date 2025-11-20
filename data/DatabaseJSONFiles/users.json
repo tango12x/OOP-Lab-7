@@ -1,0 +1,264 @@
+[
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U1",
+        "email": "ali@student.com",
+        "passwordHash": "03ac674216f3e15c761ee1a5e255f0679536232bd5b4aa237c90fda5cf8bd7d3",
+        "username": "Ali"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U2",
+        "email": "sara@instructor.com",
+        "passwordHash": "88d4266fd4e6338d13b845fcf8a3c0e2655b68a2c9b34e2a70df36f6b9cc74f8",
+        "username": "Sara"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U3",
+        "email": "ahmmedwahba@yahoo.com",
+        "passwordHash": "f40d7f51f69edfaffa29c42910fbc6af6a822f1279162d486b4a7e11c3e0ae9b",
+        "username": "ahmed"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U4",
+        "email": "ahmmedwahbaa@yahoo.com",
+        "passwordHash": "f40d7f51f69edfaffa29c42910fbc6af6a822f1279162d486b4a7e11c3e0ae9b",
+        "username": "ahmed"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U5",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U6",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U7",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": ["C3","C7"],
+        "userId": "U8",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U9",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U10",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U11",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U12",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U13",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U14",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U15",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U16",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U17",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U18",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U19",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U20",
+        "email": "email",
+        "passwordHash": "passwordHash",
+        "username": "AYmen"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U21",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "Gamal"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U22",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U23",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "bebe"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U24",
+        "email": "email2",
+        "passwordHash": "passwordHash2",
+        "username": "3aa"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [
+            "C7",
+            "C11",
+            "C1",
+            "C10",
+            "C9",
+            "C2",
+            "C3"
+        ],
+        "progress": [
+            [],
+            [],
+            ["L1"],
+            [],
+            [],
+            [],
+            []
+        ],
+        "userId": "U25",
+        "email": "galaltaman@gmail.com",
+        "passwordHash": "c62fce5bb0e0d796fd8f4efe8f59c300635d888b7dda2ad67db16b72140edc1f",
+        "username": "GalalTaman123x"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [],
+        "progress": [],
+        "userId": "U26",
+        "email": "ayman@gmail.com",
+        "passwordHash": "c92ac652abe8b01096afe71e1aace892f09fbdbe8ac17836bbb5f4a4f55c13a2",
+        "username": "galal"
+    },
+    {
+        "role": "student",
+        "enrolledCourses": [
+            "C1",
+            "C6"
+        ],
+        "progress": [
+            [
+                "L1",
+                "L2"
+            ],
+            []
+        ],
+        "userId": "U27",
+        "email": "galal@gmail.com",
+        "passwordHash": "f11feb40fed11e44d9999326dab346c527bde1da519e9dfa963db429068f15d9",
+        "username": "GalalTaman"
+    },
+    {
+        "role": "instructor",
+        "createdCourses": [],
+        "userId": "U28",
+        "email": "ahmed@gmail.com",
+        "passwordHash": "e6d3efc6abfd85ceacedc20ecbb866e564fe16742930c48f8618bff70c5028e6",
+        "username": "ahmed"
+    }
+]
