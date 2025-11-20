@@ -1,10 +1,9 @@
 package backend.services;
 
-import org.json.JSONArray;
 import java.util.ArrayList;
 import backend.databaseManager.*;
 import backend.models.*;
-import backend.util.*;
+
 
 public class StudentService {
     private Student student;
@@ -57,9 +56,9 @@ public class StudentService {
     // ENROLLED)
     private void getAvailableCoursesAndInstructors() {
         ArrayList<String> enrolledCourseIds = student.getEnrolledCourses();
-        JSONArray allCourses = Cdb.getAllCourses();
-        for (int i = 0; i < allCourses.length(); i++) {
-            String id = allCourses.getJSONObject(i).getString("courseId");
+        ArrayList<Course> allCourses = Cdb.getAllCourses();
+        for (int i = 0; i < allCourses.size(); i++) {
+            String id = allCourses.get(i).getCourseId();
             if (!enrolledCourseIds.contains(id)) {
                 availableCourses.add(Cdb.getCourse(id));
                 Course course = Cdb.getCourse(id);
@@ -73,9 +72,9 @@ public class StudentService {
     // ENROLLED)
     private void getEnrolledCoursesAndInstructors() {
         ArrayList<String> enrolledCourseIds = student.getEnrolledCourses();
-        JSONArray allCourses = Cdb.getAllCourses();
-        for (int i = 0; i < allCourses.length(); i++) {
-            String id = allCourses.getJSONObject(i).getString("courseId");
+        ArrayList<Course> allCourses = Cdb.getAllCourses();
+        for (int i = 0; i < allCourses.size(); i++) {
+            String id = allCourses.get(i).getCourseId();
             if (enrolledCourseIds.contains(id)) {
                 enrolledCourses.add(Cdb.getCourse(id));
                 Course course = Cdb.getCourse(id);

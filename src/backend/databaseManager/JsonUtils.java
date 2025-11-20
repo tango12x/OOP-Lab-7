@@ -9,9 +9,9 @@ import com.google.gson.reflect.TypeToken;
 public class JsonUtils {
 
     // File paths for our JSON databases
-    private static final String USERS_FILE = "data/users.json";
-    private static final String COURSES_FILE = "data/courses.json";
-    private static final String CERTIFICATES_FILE = "data/certificates.json";
+    // private static final String USERS_FILE = "data/users.json";
+    // private static final String COURSES_FILE = "data/courses.json";
+    // private static final String CERTIFICATES_FILE = "data/certificates.json";
 
 
 
