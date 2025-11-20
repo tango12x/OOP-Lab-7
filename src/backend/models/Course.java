@@ -35,6 +35,11 @@ public class Course {
     public ArrayList<Lesson> getLessons() {
         return lessons;
     }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
     public void setLessons(ArrayList<Lesson> lessons) {
         this.lessons = lessons;
     }

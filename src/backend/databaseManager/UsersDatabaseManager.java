@@ -1,27 +1,16 @@
 package backend.databaseManager;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import backend.models.*;
 import backend.models.parents.User;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 
-//! NTST (instantiation in ReadWrite Class in line 54)
 
 public class UsersDatabaseManager {
-    // private JSONArray users;
     private ArrayList<User> users;
     private ReadWrite db;
-// !put the right file path
-    // private final String USERS_FILE = "data/DatabaseJSONFiles/users.json";
-    private final String USERS_FILE = "data/users.json";
+    private final String USERS_FILE = "data/DatabaseJSONFiles/users.json";
 
     // CLASS CONSTRUCTOR and INITIALIZER (READS THE FILE OR CREATES A NEW ONE IF NOT
     // EXIST)
@@ -30,20 +19,6 @@ public class UsersDatabaseManager {
         db = new ReadWrite();
         users = db.readFromFile(USERS_FILE, User.class);
     }
-
-    // !NTST
-    // METHOD TO SEARCH AND RETURN THE INDEX OF THE USER IF EXIST IN THE DB , -1 IF
-    // NOT
-    // public int SearchUserIndex(String userId) {
-    // for (int i = 0; i < this.users.size(); i++) {
-    // User user = this.users.get(i);
-    // if (user.getUserId().equals(userId)) {
-    // return i; // Return the index if found
-    // }
-    // }
-    // System.out.println("User not found: " + userId);
-    // return -1; // Return -1 if not found
-    // }
 
     // METHOD TO SEARCH AND RETURN THE USER IF EXIST IN THE DB
     public User getUser(String userId) {
@@ -110,7 +85,6 @@ public class UsersDatabaseManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     // METHOD TO SAVE USERS TO FILE
@@ -129,10 +103,12 @@ public class UsersDatabaseManager {
         return "U" + String.format("%d", this.users.size() + 1);
     }
 
-    // // METHOD TO RETURN ALL USERS JSON ARRAY (FOR VALIDATION PURPOSES)
-    // public JSONArray getAllUsers() {
-    //     return this.users;
-    // }
+    // METHOD TO RETURN ALL USERS JSON ARRAY (FOR VALIDATION PURPOSES)
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> tempUsers = this.users;
+        this.users = db.readFromFile(USERS_FILE, User.class);
+        return tempUsers;
+    }
 
     // For testing purposes only
     public static void main(String[] args) {
@@ -156,4 +132,6 @@ public class UsersDatabaseManager {
         usersDB.update(user3);
         usersDB.SaveUsersToFile();
     }
+
+
 }

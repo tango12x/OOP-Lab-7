@@ -1,7 +1,6 @@
 package backend.databaseManager;
 
 import com.google.gson.*;
-import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
 import com.google.gson.reflect.TypeToken;
@@ -38,4 +37,5 @@ public class JsonUtils {
         Type listType = TypeToken.getParameterized(List.class, classOfT).getType();
         return gson.fromJson(json, listType);
     }
+    
 }
