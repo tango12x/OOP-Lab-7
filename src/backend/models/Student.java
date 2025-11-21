@@ -26,6 +26,7 @@ public class Student extends User {
 
     //standard getters and setters
     public ArrayList<String> getEnrolledCourses() {
+        if(enrolledCourses == null) enrolledCourses = new ArrayList<>();
         return enrolledCourses;
     }
     public void setEnrolledCourses(ArrayList<String> enrolledCourses) {

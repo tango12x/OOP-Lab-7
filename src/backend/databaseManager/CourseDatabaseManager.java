@@ -18,10 +18,12 @@ public class CourseDatabaseManager {
 
     // METHOD TO SEARCH AND RETURN THE COURSE IF EXIST IN THE DB
     public Course getCourse(String courseId) {
-        Course course = null;
         try {
+                        if (courseId == null) {
+                return null;
+            }
             if (this.courses.size() == 0) {
-                return course; // No users in the database
+                return null; // No users in the database
             }
             for (int i = 0; i < this.courses.size(); i++) {
                 Course tempCourse = this.courses.get(i);
@@ -29,49 +31,53 @@ public class CourseDatabaseManager {
                     // the line written under here is to make an new instance of courses array
                     // as editing the object passed as a reference may alter the data in the array
                     // so to prevent that we make a new instance of the array
-                    courses = db.readFromFile(COURSES_FILE, Course.class);
+                    this.courses = db.readFromFile(COURSES_FILE, Course.class);
                     return tempCourse;
                 }
             }
-            return course;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return course;
-    }
-
-    // METHOD TO ADD A COURSE and RETURN THE GENERATED ID (USED AT COURSE CREATION
-    // FUNCTIONALITY ONLY)
-    public String addCourse(Course newCourse) {
-        try {
-            String id = generateId();
-            newCourse.setCourseId(id);
-            Course course = newCourse;
-            courses.add(course);
-            SaveCoursesToFile();
-            return id;
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
+    // METHOD TO ADD A COURSE and RETURN THE GENERATED ID (USED AT COURSE CREATION
+    // FUNCTIONALITY ONLY)
+    public String addCourse(Course newCourse) {
+        try {
+                        if (newCourse == null) {
+                return "";
+            }
+            String id = generateId();
+            newCourse.setCourseId(id);
+            Course course = newCourse;
+            this.courses.add(course);
+            SaveCoursesToFile();
+            return id;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
     // USED TO UPDATE THE COURSE DETAILS (LIKE LESSONS ADDED OR STUDENTS ENROLLED)
     public void update(Course updatedCourse) {
         try {
-            boolean found = false;
-            String id = updatedCourse.getCourseId();
-            for (int i = 0; i < courses.size(); i++) {
-                Course course = courses.get(i);
-                if (course.getCourseId().equals(id)) {
-                    found = true;
-                    courses.remove(i);
-                    courses.add(updatedCourse);
-                    SaveCoursesToFile();
+            if (updatedCourse != null) {
+                boolean found = false;
+                String id = updatedCourse.getCourseId();
+                for (int i = 0; i < courses.size(); i++) {
+                    if (courses.get(i).getCourseId().equals(id)) {
+                        found = true;
+                        courses.remove(i);
+                        courses.add(updatedCourse);
+                        SaveCoursesToFile();
+                    }
                 }
-            }
-            if (!found) {
-                courses.add(updatedCourse);
+                if (!found) {
+                    courses.add(updatedCourse);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,6 +88,8 @@ public class CourseDatabaseManager {
     public void SaveCoursesToFile() {
         try {
             db.writeToFile(COURSES_FILE, courses);
+            // updates the courses array
+            this.courses = db.readFromFile(COURSES_FILE, Course.class);
             System.out.println("Courses saved successfully to file.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,6 +105,8 @@ public class CourseDatabaseManager {
                 if (course.getCourseId().equals(courseId)) {
                     courses.remove(i);
                     SaveCoursesToFile();
+                    System.out.println("Course deleted successfully.");
+                    break;
                 }
             }
         } catch (Exception e) {

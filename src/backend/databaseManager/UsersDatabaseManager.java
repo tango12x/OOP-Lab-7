@@ -10,7 +10,6 @@ public class UsersDatabaseManager {
     private ReadWrite db;
     private final String USERS_FILE = "data/DatabaseJSONFiles/users.json";
 
-    //!SOLVE NULL PROBLEM
     // CLASS CONSTRUCTOR and INITIALIZER (READS THE FILE OR CREATES A NEW ONE IF NOT
     // EXIST)
     public UsersDatabaseManager() {
@@ -21,13 +20,12 @@ public class UsersDatabaseManager {
 
     // METHOD TO SEARCH AND RETURN THE USER IF EXIST IN THE DB
     public User getUser(String userId) {
-        if (userId == null) {
-            return null;
-        }
-        User user = null;
         try {
+            if (userId == null) {
+                return null;
+            }
             if (this.users.size() == 0) {
-                return user; // No users in the database
+                return null; // No users in the database
             }
             for (int i = 0; i < this.users.size(); i++) {
                 User tempUser = this.users.get(i);
@@ -35,7 +33,7 @@ public class UsersDatabaseManager {
                     // the line written under here is to make an new instance of users array
                     // as editing the object passed as a reference may alter the data in the array
                     // so to prevent that we make a new instance of the array
-                    users = db.readFromFile(USERS_FILE, User.class);
+                    this.users = db.readFromFile(USERS_FILE, User.class);
                     if (tempUser.getRole().equals("student")) {
                         return ((Student) tempUser);
                     } else if (tempUser.getRole().equals("instructor")) {
@@ -43,11 +41,11 @@ public class UsersDatabaseManager {
                     }
                 }
             }
-            return user;
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return user;
     }
 
     // METHOD TO ADD A USER (USED AT SIGNUP FUNCTIONALITY ONLY) AND RETURN THE
@@ -55,17 +53,17 @@ public class UsersDatabaseManager {
     public String addUser(User newUser) {
         try {
             if (newUser == null) {
-                return null;
+                return "";
             }
             String id = generateId();
             newUser.setUserId(id);
             User user = newUser;
-            users.add(user);
+            this.users.add(user);
             SaveUsersToFile();
             return id;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return "";
         }
     }
 
@@ -77,8 +75,7 @@ public class UsersDatabaseManager {
                 boolean found = false;
                 String id = updatedUser.getUserId();
                 for (int i = 0; i < users.size(); i++) {
-                    User user = users.get(i);
-                    if (user.getUserId().equals(id)) {
+                    if (users.get(i).getUserId().equals(id)) {
                         found = true;
                         users.remove(i);
                         users.add(updatedUser);
@@ -98,6 +95,8 @@ public class UsersDatabaseManager {
     public void SaveUsersToFile() {
         try {
             db.writeToFile(USERS_FILE, users);
+            // updates the users array
+            this.users = db.readFromFile(USERS_FILE, User.class);
             System.out.println("Users saved successfully to file.");
         } catch (Exception e) {
             e.printStackTrace();
