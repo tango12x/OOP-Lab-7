@@ -1,6 +1,6 @@
 package backend.models.parents;
 
-public class User {
+public abstract class User {
     private String userId;
     private String role;
     private String username;

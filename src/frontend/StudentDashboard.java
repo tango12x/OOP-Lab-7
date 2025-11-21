@@ -34,10 +34,6 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.table.DefaultTableModel enrolledCoursesModel;
     private javax.swing.table.DefaultTableModel lessonsModel;
 
-    // Icons for lesson status (will be initialized)
-    private javax.swing.ImageIcon completedIcon;
-    private javax.swing.ImageIcon notCompletedIcon;
-
     StudentService SS;
     String courseIdForCurrentLesson = null;
 
@@ -634,7 +630,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // Use parameterized constructor with student data
-                JFrame farme = new StudentDashboard("U25","GalalTaman123x");
+                JFrame farme = new StudentDashboard("U2","Gamal");
                 farme.setVisible(true);
                 farme.setLocationRelativeTo(null);
                 farme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -5,13 +5,12 @@ import backend.models.parents.User;
 
 import java.util.ArrayList;
 
-
-
 public class UsersDatabaseManager {
     private ArrayList<User> users;
     private ReadWrite db;
     private final String USERS_FILE = "data/DatabaseJSONFiles/users.json";
 
+    //!SOLVE NULL PROBLEM
     // CLASS CONSTRUCTOR and INITIALIZER (READS THE FILE OR CREATES A NEW ONE IF NOT
     // EXIST)
     public UsersDatabaseManager() {
@@ -22,6 +21,9 @@ public class UsersDatabaseManager {
 
     // METHOD TO SEARCH AND RETURN THE USER IF EXIST IN THE DB
     public User getUser(String userId) {
+        if (userId == null) {
+            return null;
+        }
         User user = null;
         try {
             if (this.users.size() == 0) {
@@ -35,9 +37,9 @@ public class UsersDatabaseManager {
                     // so to prevent that we make a new instance of the array
                     users = db.readFromFile(USERS_FILE, User.class);
                     if (tempUser.getRole().equals("student")) {
-                        return ((Student) tempUser); // Return the index if found
+                        return ((Student) tempUser);
                     } else if (tempUser.getRole().equals("instructor")) {
-                        return ((Instructor) tempUser); // Return the index if found
+                        return ((Instructor) tempUser);
                     }
                 }
             }
@@ -52,6 +54,9 @@ public class UsersDatabaseManager {
     // GENERATED ID (Changes saved permanently)
     public String addUser(User newUser) {
         try {
+            if (newUser == null) {
+                return null;
+            }
             String id = generateId();
             newUser.setUserId(id);
             User user = newUser;
@@ -68,19 +73,21 @@ public class UsersDatabaseManager {
     // USED TO UPDATE THE USER DETAILS;
     public void update(User updatedUser) {
         try {
-            boolean found = false;
-            String id = updatedUser.getUserId();
-            for (int i = 0; i < users.size(); i++) {
-                User user = users.get(i);
-                if (user.getUserId().equals(id)) {
-                    found = true;
-                    users.remove(i);
-                    users.add(updatedUser);
-                    SaveUsersToFile();
+            if (updatedUser != null) {
+                boolean found = false;
+                String id = updatedUser.getUserId();
+                for (int i = 0; i < users.size(); i++) {
+                    User user = users.get(i);
+                    if (user.getUserId().equals(id)) {
+                        found = true;
+                        users.remove(i);
+                        users.add(updatedUser);
+                        SaveUsersToFile();
+                    }
                 }
-            }
-            if (!found) {
-                users.add(updatedUser);
+                if (!found) {
+                    users.add(updatedUser);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,6 +139,5 @@ public class UsersDatabaseManager {
         usersDB.update(user3);
         usersDB.SaveUsersToFile();
     }
-
 
 }
