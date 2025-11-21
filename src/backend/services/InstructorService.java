@@ -44,9 +44,9 @@ public class InstructorService {
     // METHOD TO GET ALL CREATED COURSES for AN INSTRUCTOR 
     private void getCreatedCoursesOfInstructor() {
         ArrayList<String> createdCoursesIds = instructor.getCreatedCourses();
-        JSONArray allCourses = Cdb.getAllCourses();
-        for (int i = 0; i < allCourses.length(); i++) {
-            String id = allCourses.getJSONObject(i).getString("courseId");
+        ArrayList<Course> allCourses = Cdb.getAllCourses();
+        for (int i = 0; i < allCourses.size(); i++) {
+            String id = allCourses.get(i).getCourseId();
             if (createdCoursesIds.contains(id)) {
                 createdCourses.add(Cdb.getCourse(id));
             }

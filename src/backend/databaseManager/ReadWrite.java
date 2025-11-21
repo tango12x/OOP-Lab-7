@@ -104,10 +104,10 @@ public class ReadWrite {
                             Student student = context.deserialize(jsonObject, Student.class);
                             // Ensure collections are never null
                             if (student.getEnrolledCourses() == null) {
-                                student.setEnrolledCourses(new ArrayList<>());
+                                student.setEnrolledCourses(new ArrayList<String>());
                             }
                             if (student.getProgress() == null) {
-                                student.setProgress(new ArrayList<>());
+                                student.setProgress(new ArrayList<ArrayList<String>>());
                             }
                             return student;
                             
@@ -133,15 +133,14 @@ public class ReadWrite {
         // Custom deserializer for Course to ensure non-null collections
         JsonDeserializer<Course> courseDeserializer = new JsonDeserializer<Course>() {
             @Override
-            public Course deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-                    throws JsonParseException {
+            public Course deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)throws JsonParseException {
                 Course course = context.deserialize(json, Course.class);
                 // Ensure collections are never null
                 if (course.getLessons() == null) {
-                    course.setLessons(new ArrayList<>());
+                    course.setLessons(new ArrayList<Lesson>());
                 }
                 if (course.getStudents() == null) {
-                    course.setStudents(new ArrayList<>());
+                    course.setStudents(new ArrayList<String>());
                 }
                 return course;
             }
