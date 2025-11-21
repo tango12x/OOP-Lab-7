@@ -2,27 +2,23 @@
   {
     "courseId": "C2",
     "title": "OOP Fundamentals",
-    "instructorId": "U4",
+    "instructorId": "U3",
     "description": "Understand OOP.",
     "lessons": [],
-    "students": [
-      "U25"
-    ]
+    "students": []
   },
   {
     "courseId": "C3",
     "title": "Databases 101",
-    "instructorId": "U8",
+    "instructorId": "U7",
     "description": "Intro to SQL.",
     "lessons": [],
-    "students": [
-      "U25"
-    ]
+    "students": []
   },
   {
     "courseId": "C4",
     "title": "Data Structures",
-    "instructorId": "U2",
+    "instructorId": "U3",
     "description": "Learn common data structures.",
     "lessons": [],
     "students": []
@@ -30,7 +26,7 @@
   {
     "courseId": "C5",
     "title": "Web Development",
-    "instructorId": "U2",
+    "instructorId": "U3",
     "description": "HTML, CSS basics.",
     "lessons": [],
     "students": []
@@ -38,27 +34,23 @@
   {
     "courseId": "C6",
     "title": "Python Programming",
-    "instructorId": "U2",
+    "instructorId": "U3",
     "description": "Intro to Python.",
     "lessons": [],
-    "students": [
-      "U27"
-    ]
+    "students": []
   },
   {
     "courseId": "C7",
     "title": "Algorithms Intro",
-    "instructorId": "U8",
+    "instructorId": "U3",
     "description": "Basics of algorithms.",
     "lessons": [],
-    "students": [
-      "U25"
-    ]
+    "students": []
   },
   {
     "courseId": "C8",
     "title": "Networks 1",
-    "instructorId": "U4",
+    "instructorId": "U3",
     "description": "Computer networks basics.",
     "lessons": [],
     "students": []
@@ -66,37 +58,15 @@
   {
     "courseId": "C9",
     "title": "Operating Systems",
-    "instructorId": "U2",
+    "instructorId": "U3",
     "description": "Learn OS concepts.",
     "lessons": [],
-    "students": [
-      "U25"
-    ]
-  },
-  {
-    "courseId": "C10",
-    "title": "Mobile App Dev",
-    "instructorId": "U2",
-    "description": "Build simple apps.",
-    "lessons": [],
-    "students": [
-      "U25"
-    ]
-  },
-  {
-    "courseId": "C11",
-    "title": "Course 11",
-    "instructorId": "U2",
-    "description": "Description 11",
-    "lessons": [],
-    "students": [
-      "U25"
-    ]
+    "students": []
   },
   {
     "courseId": "C12",
     "title": "Course 11",
-    "instructorId": "I1",
+    "instructorId": "U3",
     "description": "Description 11",
     "lessons": [],
     "students": []
@@ -104,35 +74,56 @@
   {
     "courseId": "C1",
     "title": "Java Basics",
-    "instructorId": "U2",
+    "instructorId": "U7",
     "description": "Learn Java.",
     "lessons": [
       {
         "lessonId": "L1",
         "title": "Lesson 1",
         "content": "Content 1",
-        "courseId": "C11",
+        "courseId": "C1",
         "optionalResources": []
       },
       {
         "lessonId": "L2",
         "title": "Lesson 2",
         "content": "Content 2",
-        "courseId": "C11",
+        "courseId": "C1",
         "optionalResources": []
       }
     ],
     "students": [
-      "U25",
-      "U27"
+      "U2"
     ]
   },
   {
     "courseId": "C13",
     "title": "Course 11",
-    "instructorId": "I1",
+    "instructorId": "U7",
     "description": "Description 11",
     "lessons": [],
-    "students": []
+    "students": [
+      "U2"
+    ]
+  },
+  {
+    "courseId": "C11",
+    "title": "Course 11",
+    "instructorId": "U3",
+    "description": "Description 11",
+    "lessons": [],
+    "students": [
+      "U2"
+    ]
+  },
+  {
+    "courseId": "C10",
+    "title": "Mobile App Dev",
+    "instructorId": "U3",
+    "description": "Build simple apps.",
+    "lessons": [],
+    "students": [
+      "U2"
+    ]
   }
 ]

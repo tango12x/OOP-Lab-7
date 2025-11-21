@@ -134,6 +134,7 @@ public class ReadWrite {
         JsonDeserializer<Course> courseDeserializer = new JsonDeserializer<Course>() {
             @Override
             public Course deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)throws JsonParseException {
+                //!NTST
                 Course course = context.deserialize(json, Course.class);
                 // Ensure collections are never null
                 if (course.getLessons() == null) {
@@ -153,7 +154,7 @@ public class ReadWrite {
                 .disableHtmlEscaping() // Preserve HTML in content
                 .setDateFormat("yyyy-MM-dd HH:mm:ss") // Consistent date format
                 .registerTypeAdapter(User.class, userDeserializer) // Handle User polymorphism
-                .registerTypeAdapter(Course.class, courseDeserializer) // Ensure non-null collections in Course
+                // .registerTypeAdapter(Course.class, courseDeserializer) // Ensure non-null collections in Course
                 .registerTypeAdapter(Collection.class, collectionAdapter)
                 .registerTypeAdapter(List.class, collectionAdapter)
                 .registerTypeAdapter(ArrayList.class, collectionAdapter)

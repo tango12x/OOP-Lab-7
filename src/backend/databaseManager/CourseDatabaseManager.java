@@ -19,7 +19,8 @@ public class CourseDatabaseManager {
     // METHOD TO SEARCH AND RETURN THE COURSE IF EXIST IN THE DB
     public Course getCourse(String courseId) {
         try {
-                        if (courseId == null) {
+            if (courseId == null) {
+                
                 return null;
             }
             if (this.courses.size() == 0) {
@@ -46,7 +47,7 @@ public class CourseDatabaseManager {
     // FUNCTIONALITY ONLY)
     public String addCourse(Course newCourse) {
         try {
-                        if (newCourse == null) {
+            if (newCourse == null) {
                 return "";
             }
             String id = generateId();

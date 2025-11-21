@@ -9,15 +9,6 @@
     "passwordHash": "passwordHash"
   },
   {
-    "enrolledCourses": [],
-    "progress": [],
-    "userId": "U2",
-    "role": "student",
-    "username": "Gamal",
-    "email": "email2",
-    "passwordHash": "passwordHash2"
-  },
-  {
     "createdCourses": [],
     "userId": "U4",
     "role": "instructor",
@@ -27,13 +18,20 @@
   },
   {
     "createdCourses": [
-      "C1",
-      "C13",
-      "C3"
+      "C2",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C10",
+      "C11",
+      "C12"
     ],
     "userId": "U3",
     "role": "instructor",
-    "username": "3aa",
+    "username": "gelo",
     "email": "email2",
     "passwordHash": "passwordHash2"
   },
@@ -72,6 +70,27 @@
     "userId": "U7",
     "role": "instructor",
     "username": "3aa",
+    "email": "email2",
+    "passwordHash": "passwordHash2"
+  },
+  {
+    "enrolledCourses": [
+      "C1",
+      "C13",
+      "C11",
+      "C10"
+    ],
+    "progress": [
+      [
+        "L1"
+      ],
+      [],
+      [],
+      []
+    ],
+    "userId": "U2",
+    "role": "student",
+    "username": "Gamal",
     "email": "email2",
     "passwordHash": "passwordHash2"
   }

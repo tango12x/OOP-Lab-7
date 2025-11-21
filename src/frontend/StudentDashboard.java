@@ -450,12 +450,21 @@ public class StudentDashboard extends javax.swing.JFrame {
                 "Confirm Enrollment", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            //!NTST
+                
             SS.enrollInCourse(courseId);
-
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Enrolled in: " + courseTitle,
                     "Enrollment Successful", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+        try {
+                availableCoursesModel.setRowCount(0);
+                enrolledCoursesModel.setRowCount(0);
+                lessonsModel.setRowCount(0);
+                courseIdForCurrentLesson = null;
+                SS.refresh();
+                loadStudentData();
+        } catch (Exception e) {
+                e.printStackTrace();
         }
     }// GEN-LAST:event_btnEnrollActionPerformed
 
