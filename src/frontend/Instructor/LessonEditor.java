@@ -1,5 +1,6 @@
 package frontend.Instructor;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import backend.databaseManager.CourseDatabaseManager;
@@ -10,7 +11,7 @@ import backend.models.*;
  *
  * @author pc
  */
-public class LessonEditor extends javax.swing.JFrame {
+public class LessonEditor extends javax.swing.JDialog {
     String mode;
     String courseId;
     String lessonId;
@@ -21,7 +22,9 @@ public class LessonEditor extends javax.swing.JFrame {
     /**
      * Creates new form LessonEditor
      */
-    public LessonEditor(String courseId) {
+    public LessonEditor(String courseId, JFrame parent) {
+        // !NTST
+        super(parent, "Dialog", true);
         this.mode = "create";
         this.courseId = courseId;
         Cdb = new CourseDatabaseManager();
@@ -29,10 +32,12 @@ public class LessonEditor extends javax.swing.JFrame {
         initComponents();
         advancedIntialize();
         this.lessonId = "";
-        lesson = new Lesson(course.generateLessonId(),"", courseId,"");
+        lesson = new Lesson(course.generateLessonId(), "", courseId, "");
     }
 
-    public LessonEditor(String courseId, String lessonId) {
+    public LessonEditor(String courseId, String lessonId, JFrame parent) {
+        // !NTST
+        super(parent, "Dialog", true);
         this.mode = "edit";
         this.courseId = courseId;
         this.lessonId = lessonId;
@@ -48,9 +53,9 @@ public class LessonEditor extends javax.swing.JFrame {
         advancedIntialize();
     }
 
+
     private void advancedIntialize() {
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         String title;
         String content;
@@ -61,12 +66,12 @@ public class LessonEditor extends javax.swing.JFrame {
         } else {
             title = lesson.getTitle();
             content = lesson.getContent();
-            LblInstructorInfo.setText("Lesson: "+ title+" (ID: " +lessonId+")");
+            LblInstructorInfo.setText("Lesson: " + title + " (ID: " + lessonId + ")");
         }
         titlefield.setText(title);
         contentField.setText(content);
         resourceField.setText("");
-        //Name of label is not meaningful , but irrelevant here
+        // Name of label is not meaningful , but irrelevant here
     }
 
     /**
@@ -92,7 +97,7 @@ public class LessonEditor extends javax.swing.JFrame {
         contentField = new javax.swing.JTextField();
         resourceField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

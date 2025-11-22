@@ -252,9 +252,9 @@ public class ViewLessons extends javax.swing.JFrame {
                 "Confirm addition", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            JFrame frame = new LessonEditor(courseId);
+            JDialog frame = new LessonEditor(courseId, this);
             frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
         }
         //wait for child to finish
@@ -280,9 +280,9 @@ public class ViewLessons extends javax.swing.JFrame {
                 "Confirm Edit", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            JFrame frame = new LessonEditor(courseId,id);
+            JDialog frame = new LessonEditor(courseId,id,this);
             frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
         }
         try {
