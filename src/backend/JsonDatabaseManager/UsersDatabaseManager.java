@@ -1,5 +1,6 @@
 package backend.JsonDatabaseManager;
 
+import backend.ProgramFunctions.AdminManagement.Admin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -90,6 +91,10 @@ public class UsersDatabaseManager {
                 JSONArray createdCourses = obj.getJSONArray("createdCourses");
                 ((Instructor) user).setCreatedCourses(JsonDatabaseManager.toStringList(createdCourses));
             }
+            else if (role.equals("admin")) {
+            user = new Admin(userId, username, email, passwordHash);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,6 +119,10 @@ public class UsersDatabaseManager {
             } else if (newUser.getRole().equals("instructor")) {
                 obj.put("createdCourses", new ArrayList<String>());
             }
+            else if (newUser.getRole().equals("admin")) {
+            // Admin has NO extra fields
+            }
+
 
             this.users.put(obj);
             return obj.getString("userId");
@@ -145,6 +154,10 @@ public class UsersDatabaseManager {
                 obj.put("createdCourses", ((Instructor) updatedUser).getCreatedCourses() == null ? 
                  new ArrayList<String>() : JsonDatabaseManager.toJSONArray(((Instructor) updatedUser).getCreatedCourses()));
             }
+            else if (updatedUser.getRole().equals("admin")) {
+            // Nothing extra to update for admin
+            }
+
 
             //this.users.put(obj);
         } catch (Exception e) {
