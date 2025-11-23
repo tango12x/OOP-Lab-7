@@ -45,9 +45,14 @@ public class AdminService {
         }
     }
 
-    // // Get all approved courses (for dashboard)
+    // Get all approved courses (for dashboard)
     public ArrayList<Course> getApprovedCourses() {
         return Cdb.getApprovedCourses();
+    }
+
+    // Get all rejected courses (for dashboard)
+    public ArrayList<Course> getRejectedCourses() {
+        return Cdb.getRejectedCourses();
     }
 
 }

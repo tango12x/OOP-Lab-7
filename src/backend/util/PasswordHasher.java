@@ -25,4 +25,9 @@ public class PasswordHasher {
         return sb.toString();
     }
 
+    // For testing
+    public static void main(String[] args) {
+        System.out.println(hashPassword("admin"));
+    }
+
 }

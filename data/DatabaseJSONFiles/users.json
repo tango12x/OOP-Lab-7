@@ -5,7 +5,7 @@
     "userId": "U1",
     "role": "student",
     "username": "AYmen",
-    "email": "email",
+    "email": "email1@gmail.com",
     "passwordHash": "passwordHash"
   },
   {
@@ -13,7 +13,7 @@
     "userId": "U4",
     "role": "instructor",
     "username": "bebe",
-    "email": "email2",
+    "email": "email4@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
@@ -32,7 +32,7 @@
     "userId": "U3",
     "role": "instructor",
     "username": "gelo",
-    "email": "email2",
+    "email": "email3@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
@@ -41,7 +41,7 @@
     "userId": "U5",
     "role": "student",
     "username": "AYmen",
-    "email": "email",
+    "email": "email5@gmail.com",
     "passwordHash": "passwordHash"
   },
   {
@@ -50,7 +50,7 @@
     "userId": "U6",
     "role": "student",
     "username": "Gamal",
-    "email": "email2",
+    "email": "email6@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
@@ -58,7 +58,7 @@
     "userId": "U8",
     "role": "instructor",
     "username": "bebe",
-    "email": "email2",
+    "email": "email8@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
@@ -79,7 +79,7 @@
     "userId": "U2",
     "role": "student",
     "username": "Gamal",
-    "email": "email2",
+    "email": "email2@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
@@ -94,14 +94,14 @@
     "userId": "U7",
     "role": "instructor",
     "username": "3aa",
-    "email": "email2",
+    "email": "email7@gmail.com",
     "passwordHash": "passwordHash2"
   },
   {
     "userId": "U9",
     "role": "admin",
     "username": "3aa",
-    "email": "email2",
-    "passwordHash": "passwordHash2"
+    "email": "admin@gmail.com",
+    "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
   }
 ]

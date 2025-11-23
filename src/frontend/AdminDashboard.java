@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package frontend;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import backend.models.*;
@@ -19,10 +16,14 @@ import java.util.ArrayList;
  */
 public class AdminDashboard extends javax.swing.JFrame {
 
+    private String adminId;
+    AdminService AS;
     /**
      * Creates new form AdminDashboard
      */
-    public AdminDashboard() {
+    public AdminDashboard(String adminId) {
+        this.adminId = adminId;
+        AS = new AdminService(adminId);
         initComponents();
         loadPendingCourses();
         loadAcceptedRejectedCourses();
@@ -193,7 +194,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLogoutActionPerformed
-        new Login().setVisible(true);
+        JFrame frame = new Login();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
         this.dispose();
 
     }// GEN-LAST:event_btnLogoutActionPerformed
@@ -206,18 +210,14 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAcceptActionPerformed
         int row = jTable1Pendingcourses.getSelectedRow();
-
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Select a course to accept!");
             return;
         }
 
         String courseId = jTable1Pendingcourses.getValueAt(row, 0).toString();
-
-        adminService.approveCourse(courseId);
-
+        AS.approveCourse(courseId);
         JOptionPane.showMessageDialog(this, "Course Approved!");
-
         loadPendingCourses();
         loadAcceptedRejectedCourses();
 
@@ -225,22 +225,52 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRemoveActionPerformed
         int row = jTable1Pendingcourses.getSelectedRow();
-
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Select a course to reject!");
             return;
         }
-
         String courseId = jTable1Pendingcourses.getValueAt(row, 0).toString();
-
-        adminService.rejectCourse(courseId);
-
+        AS.rejectCourse(courseId);
         JOptionPane.showMessageDialog(this, "Course Rejected!");
-
         loadPendingCourses();
         loadAcceptedRejectedCourses();
 
     }// GEN-LAST:event_btnRemoveActionPerformed
+
+        private void loadPendingCourses() {
+        DefaultTableModel model = (DefaultTableModel) jTable1Pendingcourses.getModel();
+        model.setRowCount(0);
+
+        for (Course c : AS.getPendingCourses()) {
+            model.addRow(new Object[] {
+                    c.getCourseId(),
+                    c.getTitle(),
+                    c.getDescription(),
+                    c.getInstructorId(),
+                    c.getApprovalStatus()
+            });
+        }
+    }
+
+    private void loadAcceptedRejectedCourses() {
+        DefaultTableModel model = (DefaultTableModel) jTable2Acceptedorrejected.getModel();
+        model.setRowCount(0);
+
+        ArrayList<Course> all = new ArrayList<>();
+        all = AS.getApprovedCourses();
+        all.addAll(AS.getRejectedCourses());
+
+        for (Course c : all) {
+            model.addRow(new Object[] {
+                    c.getCourseId(),
+                    c.getTitle(),
+                    c.getDescription(),
+                    c.getInstructorId(),
+                    c.getApprovalStatus()
+            });
+        }
+    }
+
 
     /**
      * @param args the command line arguments
@@ -280,7 +310,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminDashboard().setVisible(true);
+                new AdminDashboard("U9").setVisible(true);
             }
         });
     }
@@ -298,49 +328,4 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     // End of variables declaration//GEN-END:variables
-    private AdminService adminService = new AdminService("U9");
-
-    private void loadPendingCourses() {
-        DefaultTableModel model = (DefaultTableModel) jTable1Pendingcourses.getModel();
-        model.setRowCount(0);
-
-        for (Course c : adminService.getPendingCourses()) {
-            model.addRow(new Object[] {
-                    c.getCourseId(),
-                    c.getTitle(),
-                    c.getDescription(),
-                    c.getInstructorId(),
-                    c.getApprovalStatus()
-            });
-        }
-    }
-
-    private void loadAcceptedRejectedCourses() {
-        DefaultTableModel model = (DefaultTableModel) jTable2Acceptedorrejected.getModel();
-        model.setRowCount(0);
-
-        ArrayList<Course> all = new ArrayList<>();
-        all = adminService.getApprovedCourses();
-
-        // // Fetch all rejected courses too
-        // CourseDatabaseManager db = new CourseDatabaseManager();
-        // JSONArray arr = db.getAllCourses();
-        // for (int i = 0; i < arr.length(); i++) {
-        //     String id = arr.getJSONObject(i).getString("courseId");
-        //     Course c = db.getCourseWithoutLessons(id);
-        //     if (c.getApprovalStatus().equals("REJECTED")) {
-        //         all.add(c);
-        //     }
-        // }
-
-        for (Course c : all) {
-            model.addRow(new Object[] {
-                    c.getCourseId(),
-                    c.getTitle(),
-                    c.getDescription(),
-                    c.getInstructorId(),
-                    c.getApprovalStatus()
-            });
-        }
-    }
 }

@@ -232,55 +232,6 @@ public class CourseDatabaseManager {
         }
     }
 
-
-    //!NTST
-    // // GET COURSE WITHOUT LESSONS
-    // public Course getCourseWithoutLessons(String courseId) {
-    //     int index = SearchCourseIndex(courseId);
-    //     if (index == -1)
-    //         return null;
-
-    //     JSONObject obj = this.courses.getJSONObject(index);
-
-    //     String title = obj.getString("title");
-    //     String instructorId = obj.getString("instructorId");
-    //     String description = obj.getString("description");
-
-    //     // Create simple course object
-    //     Course c = new Course(courseId, title, instructorId, description);
-
-    //     // Set students list
-    //     JSONArray stdArr = obj.getJSONArray("students");
-    //     c.setStudents(JsonDatabaseManager.toStringList(stdArr));
-
-    //     // Approval status
-    //     if (obj.has("approvalStatus"))
-    //         c.setApprovalStatus(obj.getString("approvalStatus"));
-    //     else
-    //         c.setApprovalStatus("PENDING");
-
-    //     // DO NOT READ or PARSE lessons
-    //     c.setLessons(new ArrayList<>());
-
-    //     return c;
-    // }
-
-    // public ArrayList<Course> getApprovedCoursesWithLessons() {
-    //     ArrayList<Course> list = new ArrayList<>();
-
-    //     for (int i = 0; i < courses.length(); i++) {
-    //         JSONObject obj = courses.getJSONObject(i);
-
-    //         if (obj.optString("approvalStatus", "PENDING").equals("APPROVED")) {
-    //             // get course WITH lessons
-    //             list.add(getCourse(obj.getString("courseId")));
-    //         }
-    //     }
-    //     return list;
-    // }
-
-    // ===========================================================================================
-
     // For testing purposes only
     public static void main(String[] args) {
         // test for all methods here
