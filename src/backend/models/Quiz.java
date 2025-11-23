@@ -71,7 +71,16 @@ public class Quiz {
     public int getQuestionCount() {
         return questions.size();}
 
-    
+    //EVALUATE QUIZ METHOD
+    public int calculateScore(ArrayList<Integer> answers) {
+    if (answers == null || answers.size() != questions.size()) {
+        return 0;}
+    int score = 0;
+    for (int i = 0; i < questions.size(); i++) {
+        int selectedIndex = answers.get(i); 
+        if (selectedIndex >= 0 && questions.get(i).isCorrectAnswer(selectedIndex)) {
+            score += questions.get(i).getPoints();}}
+    return score;}
 
 
     
