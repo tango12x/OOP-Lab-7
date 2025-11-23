@@ -1,5 +1,6 @@
 [
     {
+        "approvalStatus": "APPROVED",
         "description": "Learn Java.",
         "students": [
             "U25",
@@ -7,25 +8,11 @@
         ],
         "title": "Java Basics",
         "courseId": "C1",
-        "lessons": [
-            {
-                "optionalResources": [],
-                "lessonId": "L1",
-                "title": "Lesson 1",
-                "courseId": "C11",
-                "content": "Content 1"
-            },
-            {
-                "optionalResources": [],
-                "lessonId": "L2",
-                "title": "Lesson 2",
-                "courseId": "C11",
-                "content": "Content 2"
-            }
-        ],
+        "lessons": [],
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "REJECTED",
         "description": "Understand OOP.",
         "students": ["U25"],
         "title": "OOP Fundamentals",
@@ -34,6 +21,7 @@
         "instructorId": "U4"
     },
     {
+        "approvalStatus": "APPROVED",
         "description": "Intro to SQL.",
         "students": ["U25"],
         "title": "Databases 101",
@@ -42,6 +30,7 @@
         "instructorId": "U8"
     },
     {
+        "approvalStatus": "REJECTED",
         "description": "Learn common data structures.",
         "students": [],
         "title": "Data Structures",
@@ -50,6 +39,7 @@
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "REJECTED",
         "description": "HTML, CSS basics.",
         "students": [],
         "title": "Web Development",
@@ -58,14 +48,19 @@
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "APPROVED",
         "description": "Intro to Python.",
-        "students": ["U27"],
+        "students": [
+            "U27",
+            "U25"
+        ],
         "title": "Python Programming",
         "courseId": "C6",
         "lessons": [],
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "PENDING",
         "description": "Basics of algorithms.",
         "students": ["U25"],
         "title": "Algorithms Intro",
@@ -74,6 +69,7 @@
         "instructorId": "U8"
     },
     {
+        "approvalStatus": "PENDING",
         "description": "Computer networks basics.",
         "students": [],
         "title": "Networks 1",
@@ -82,6 +78,7 @@
         "instructorId": "U4"
     },
     {
+        "approvalStatus": "PENDING",
         "description": "Learn OS concepts.",
         "students": ["U25"],
         "title": "Operating Systems",
@@ -90,6 +87,7 @@
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "PENDING",
         "description": "Build simple apps.",
         "students": ["U25"],
         "title": "Mobile App Dev",
@@ -98,6 +96,7 @@
         "instructorId": "U2"
     },
     {
+        "approvalStatus": "PENDING",
         "description": "Description 11",
         "students": ["U25"],
         "title": "Course 11",
