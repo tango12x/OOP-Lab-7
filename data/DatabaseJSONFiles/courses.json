@@ -1,215 +1,231 @@
 [
-  {
-    "courseId": "C2",
-    "title": "OOP Fundamentals",
-    "instructorId": "U3",
-    "description": "Understand OOP.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C3",
-    "title": "Databases 101",
-    "instructorId": "U7",
-    "description": "Intro to SQL.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C4",
-    "title": "Data Structures",
-    "instructorId": "U3",
-    "description": "Learn common data structures.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C5",
-    "title": "Web Development",
-    "instructorId": "U3",
-    "description": "HTML, CSS basics.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C6",
-    "title": "Python Programming",
-    "instructorId": "U3",
-    "description": "Intro to Python.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C7",
-    "title": "Algorithms Intro",
-    "instructorId": "U3",
-    "description": "Basics of algorithms.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C8",
-    "title": "Networks 1",
-    "instructorId": "U3",
-    "description": "Computer networks basics.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C9",
-    "title": "Operating Systems",
-    "instructorId": "U3",
-    "description": "Learn OS concepts.",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C12",
-    "title": "Course 11",
-    "instructorId": "U3",
-    "description": "Description 11",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C13",
-    "title": "Course 11",
-    "instructorId": "U7",
-    "description": "Description 11",
-    "lessons": [],
-    "students": [
-      "U2"
-    ]
-  },
-  {
-    "courseId": "C11",
-    "title": "Course 11",
-    "instructorId": "U3",
-    "description": "Description 11",
-    "lessons": [],
-    "students": [
-      "U2"
-    ]
-  },
-  {
-    "courseId": "C10",
-    "title": "Mobile App Dev",
-    "instructorId": "U3",
-    "description": "Build simple apps.",
-    "lessons": [],
-    "students": [
-      "U2"
-    ]
-  },
-  {
-    "courseId": "C1",
-    "title": "Java Basics",
-    "instructorId": "U7",
-    "description": "Learn Java.",
-    "lessons": [
-      {
-        "lessonId": "L1",
-        "title": "Lesson 1",
-        "content": "Content 1",
+    {
+        "approvalStatus": "APPROVED",
         "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L2",
-        "title": "Lesson 2",
-        "content": "Content 3",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L3",
-        "title": "haha",
-        "content": "haha ya ",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L4",
-        "title": "keke",
-        "content": "elel",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L5",
-        "title": "d;dd;",
-        "content": "d,ld",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L6",
-        "title": "llsdss",
-        "content": "ksksk",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L7",
-        "title": "jfjjfj",
-        "content": "kffkf",
-        "courseId": "C1",
-        "optionalResources": []
-      },
-      {
-        "lessonId": "L8",
-        "title": "ddlldl",
-        "content": "dldll",
-        "courseId": "C1",
-        "optionalResources": []
-      }
-    ],
-    "students": [
-      "U2"
-    ]
-  },
-  {
-    "courseId": "C14",
-    "title": "fffffffffffffffffffffffffffffffff",
-    "instructorId": "U7",
-    "description": "ffccccccccccccccccccccc",
-    "lessons": [
-      {
-        "lessonId": "L1",
-        "title": "ff",
-        "content": "ff",
-        "courseId": "C14",
-        "optionalResources": []
-      }
-    ],
-    "students": []
-  },
-  {
-    "courseId": "C15",
-    "title": "rr",
-    "instructorId": "U7",
-    "description": "rr",
-    "lessons": [],
-    "students": []
-  },
-  {
-    "courseId": "C16",
-    "title": "rrhhh",
-    "instructorId": "U7",
-    "description": "rr",
-    "lessons": [
-      {
-        "lessonId": "L1",
-        "title": "gg",
-        "content": "ggg",
-        "courseId": "C16",
-        "optionalResources": [
-          "ggg",
-          "gggg",
-          "gggggggggggggggggggggggggggggg"
+        "title": "Java Basics",
+        "instructorId": "U7",
+        "description": "Learn Java.",
+        "lessons": [
+            {
+                "lessonId": "L1",
+                "title": "Lesson 1",
+                "content": "Content 1",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L2",
+                "title": "Lesson 2",
+                "content": "Content 3",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L3",
+                "title": "haha",
+                "content": "haha ya ",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L4",
+                "title": "keke",
+                "content": "elel",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L5",
+                "title": "d;dd;",
+                "content": "d,ld",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L6",
+                "title": "llsdss",
+                "content": "ksksk",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L7",
+                "title": "jfjjfj",
+                "content": "kffkf",
+                "courseId": "C1",
+                "optionalResources": []
+            },
+            {
+                "lessonId": "L8",
+                "title": "ddlldl",
+                "content": "dldll",
+                "courseId": "C1",
+                "optionalResources": []
+            }
+        ],
+        "students": [
+            "U2"
         ]
-      }
-    ],
-    "students": []
-  }
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C2",
+        "title": "OOP Fundamentals",
+        "instructorId": "U3",
+        "description": "Understand OOP.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C3",
+        "title": "Databases 101",
+        "instructorId": "U7",
+        "description": "Intro to SQL.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C4",
+        "title": "Data Structures",
+        "instructorId": "U3",
+        "description": "Learn common data structures.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C5",
+        "title": "Web Development",
+        "instructorId": "U3",
+        "description": "HTML, CSS basics.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C6",
+        "title": "Python Programming",
+        "instructorId": "U3",
+        "description": "Intro to Python.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C7",
+        "title": "Algorithms Intro",
+        "instructorId": "U3",
+        "description": "Basics of algorithms.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C8",
+        "title": "Networks 1",
+        "instructorId": "U3",
+        "description": "Computer networks basics.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C9",
+        "title": "Operating Systems",
+        "instructorId": "U3",
+        "description": "Learn OS concepts.",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C10",
+        "title": "Mobile App Dev",
+        "instructorId": "U3",
+        "description": "Build simple apps.",
+        "lessons": [],
+        "students": [
+            "U2"
+        ]
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C11",
+        "title": "Course 11",
+        "instructorId": "U3",
+        "description": "Description 11",
+        "lessons": [],
+        "students": [
+            "U2"
+        ]
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C12",
+        "title": "Course 11",
+        "instructorId": "U3",
+        "description": "Description 11",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C13",
+        "title": "Course 11",
+        "instructorId": "U7",
+        "description": "Description 11",
+        "lessons": [],
+        "students": [
+            "U2"
+        ]
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C14",
+        "title": "fffffffffffffffffffffffffffffffff",
+        "instructorId": "U7",
+        "description": "ffccccccccccccccccccccc",
+        "lessons": [
+            {
+                "lessonId": "L1",
+                "title": "ff",
+                "content": "ff",
+                "courseId": "C14",
+                "optionalResources": []
+            }
+        ],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C15",
+        "title": "rr",
+        "instructorId": "U7",
+        "description": "rr",
+        "lessons": [],
+        "students": []
+    },
+    {
+        "approvalStatus": "APPROVED",
+        "courseId": "C16",
+        "title": "rrhhh",
+        "instructorId": "U7",
+        "description": "rr",
+        "lessons": [
+            {
+                "lessonId": "L1",
+                "title": "gg",
+                "content": "ggg",
+                "courseId": "C16",
+                "optionalResources": [
+                    "ggg",
+                    "gggg",
+                    "gggggggggggggggggggggggggggggg"
+                ]
+            }
+        ],
+        "students": []
+    }
 ]
