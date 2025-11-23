@@ -92,6 +92,13 @@ public class Quiz {
     public boolean isPassed(ArrayList<Integer> answers) {
        return calculatePercentage(answers) >= passingScore;}
 
+    // ADDING QUESTION TO THE QUIZ
+    public void addQuestion(Question question) {
+        if (question != null && question.isValid()) {
+            questions.add(question);}}
+    
+
+
 
     
 }
