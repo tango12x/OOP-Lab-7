@@ -26,6 +26,8 @@ public class EnrolledStudents extends javax.swing.JDialog {
      */
     public EnrolledStudents(String courseId, InstructorDashboard parent) {
         super(parent, "Dialog", true);
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(parent);
         this.courseId = courseId;
         Cdb = new CourseDatabaseManager();
         Udb = new UsersDatabaseManager();
@@ -42,8 +44,6 @@ public class EnrolledStudents extends javax.swing.JDialog {
 
     private void advancedInitialize() {
         Student s;
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.setLocationRelativeTo(null);
         LblEnrolledStudentsInfo.setText("Students of Course: " +
                 course.getTitle() + " (ID: " + courseId + ")");
 

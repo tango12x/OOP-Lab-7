@@ -33,6 +33,7 @@ public class CourseEditor extends javax.swing.JDialog {
                 Cdb = new CourseDatabaseManager();
                 Udb = new UsersDatabaseManager();
                 this.courseId = Cdb.generateId();
+                this.instructor = (Instructor) Udb.getUser(instructorId);
                 course = new Course(courseId, "", instructorId, "");
                 initComponents();
                 try {
@@ -50,7 +51,7 @@ public class CourseEditor extends javax.swing.JDialog {
                 Udb = new UsersDatabaseManager();
                 this.courseId = courseId;
                 this.instructorId = instructorId;
-                instructor = (Instructor) Udb.getUser(instructorId);
+                this.instructor = (Instructor) Udb.getUser(instructorId);
                 course = Cdb.getCourse(courseId);
                 if (course == null) {
                         System.out.println("course with this id not found");
@@ -65,7 +66,7 @@ public class CourseEditor extends javax.swing.JDialog {
 
         private void advancedIntialize() {
                 this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                this.setLocationRelativeTo(null);
+                this.setLocationRelativeTo(parentView);
                 String title;
                 String description;
                 if (mode.equalsIgnoreCase("create")) {
@@ -299,6 +300,8 @@ public class CourseEditor extends javax.swing.JDialog {
                                 Cdb.update(course);
                                 instructor.addCreatedCourse(courseId);
                                 Cdb.SaveCoursesToFile();
+                                Udb.update(instructor);
+                                Udb.SaveUsersToFile();
                                 // Refresh parent table
                                 if (parentView != null) {
                                         parentView.initializeTableAndLoadData();
@@ -307,8 +310,8 @@ public class CourseEditor extends javax.swing.JDialog {
                                                 "Now we are ready to add lessons.",
                                                 "add lessons", javax.swing.JOptionPane.WARNING_MESSAGE);
                                 ViewLessons frame = new ViewLessons(courseId, parentView);
+                                frame.setLocationRelativeTo(this);
                                 frame.setVisible(true);
-                                frame.setLocationRelativeTo(null);
                                 this.dispose();
                         } else {
                                 course.setTitle(titleField.getText());
@@ -323,8 +326,8 @@ public class CourseEditor extends javax.swing.JDialog {
                                                 "Now we are ready to edit lessons.",
                                                 "edit lessons", javax.swing.JOptionPane.WARNING_MESSAGE);
                                 ViewLessons frame = new ViewLessons(courseId, parentView);
+                                frame.setLocationRelativeTo(this);
                                 frame.setVisible(true);
-                                frame.setLocationRelativeTo(null);
                                 this.dispose();
                         }
                 }

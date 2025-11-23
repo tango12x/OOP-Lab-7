@@ -77,8 +77,9 @@ public class UsersDatabaseManager {
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getUserId().equals(id)) {
                         found = true;
-                        users.remove(i);
-                        users.add(updatedUser);
+                        // users.remove(i);
+                        // users.add(updatedUser);
+                        users.set(i, updatedUser);
                         SaveUsersToFile();
                     }
                 }

@@ -71,8 +71,9 @@ public class CourseDatabaseManager {
                 for (int i = 0; i < courses.size(); i++) {
                     if (courses.get(i).getCourseId().equals(id)) {
                         found = true;
-                        courses.remove(i);
-                        courses.add(updatedCourse);
+                        // courses.remove(i);
+                        // courses.add(updatedCourse);
+                        courses.set(i,updatedCourse);
                         SaveCoursesToFile();
                     }
                 }

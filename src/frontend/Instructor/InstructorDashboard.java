@@ -7,6 +7,7 @@ package frontend.Instructor;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 import backend.models.Course;
 import backend.services.InstructorService;
@@ -55,8 +56,11 @@ public class InstructorDashboard extends javax.swing.JFrame {
         };
         myCoursesTable.setModel(createdCoursesModel);
 
+        // Refresh to get latest data
+        IS.refresh();
         // Load created courses
         ArrayList<Course> createdCourses = IS.getCreatedCourses();
+
         for (int i = 0; i < createdCourses.size(); i++) {
             Course c = createdCourses.get(i);
             createdCoursesModel.addRow(new Object[] {
@@ -399,7 +403,7 @@ public class InstructorDashboard extends javax.swing.JFrame {
         EnrolledStudents frame = new EnrolledStudents(courseId, this);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(this);
     }// GEN-LAST:event_btnViewStudentsActionPerformed
 
     private void btnDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteCourseActionPerformed
@@ -480,7 +484,9 @@ public class InstructorDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InstructorDashboard("U7","3aa").setVisible(true);
+                JFrame frame = new InstructorDashboard("U7","3aa");
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
             }
         });
     }

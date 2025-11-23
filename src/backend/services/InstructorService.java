@@ -47,8 +47,6 @@ public class InstructorService {
         ArrayList<Course> allCourses = Cdb.getAllCourses();
         for (int i = 0; i < allCourses.size(); i++) {
             String id = allCourses.get(i).getCourseId();
-            //for debugging
-            System.out.println(id);
             if (createdCoursesIds.contains(id)) {
                 createdCourses.add(Cdb.getCourse(id));
             }

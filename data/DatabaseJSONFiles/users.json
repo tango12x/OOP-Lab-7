@@ -62,18 +62,6 @@
     "passwordHash": "passwordHash2"
   },
   {
-    "createdCourses": [
-      "C1",
-      "C13",
-      "C3"
-    ],
-    "userId": "U7",
-    "role": "instructor",
-    "username": "3aa",
-    "email": "email2",
-    "passwordHash": "passwordHash2"
-  },
-  {
     "enrolledCourses": [
       "C1",
       "C13",
@@ -91,6 +79,21 @@
     "userId": "U2",
     "role": "student",
     "username": "Gamal",
+    "email": "email2",
+    "passwordHash": "passwordHash2"
+  },
+  {
+    "createdCourses": [
+      "C1",
+      "C13",
+      "C3",
+      "C14",
+      "C15",
+      "C16"
+    ],
+    "userId": "U7",
+    "role": "instructor",
+    "username": "3aa",
     "email": "email2",
     "passwordHash": "passwordHash2"
   }

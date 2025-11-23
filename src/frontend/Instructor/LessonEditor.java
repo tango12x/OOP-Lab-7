@@ -56,7 +56,7 @@ public class LessonEditor extends javax.swing.JDialog {
 
     private void advancedIntialize() {
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(parentView);
         String title;
         String content;
         if (mode.equalsIgnoreCase("create")) {

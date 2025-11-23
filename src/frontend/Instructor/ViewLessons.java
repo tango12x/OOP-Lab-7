@@ -26,24 +26,24 @@ public class ViewLessons extends JDialog {
     public ViewLessons(String courseId, JFrame parent) {
         super(parent, "Dialog", true);
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(parent);
         this.courseId = courseId;
         this.Title = "";
-        //name of label is not right 
+        // name of label is not right
         Cdb = new CourseDatabaseManager();
         initComponents();
         initializeTableAndLoadData();
         LblInstructorInfo.setText("Lessons of Course: " + Title + " (ID: " + courseId + ")");
     }
 
-    //This constructor is specific for CourseEditor usage
+    // This constructor is specific for CourseEditor usage
     public ViewLessons(String courseId, JDialog parent) {
         super(parent, "Dialog", true);
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(parent);
         this.courseId = courseId;
         this.Title = "";
-        //name of label is not right 
+        // name of label is not right
         Cdb = new CourseDatabaseManager();
         initComponents();
         initializeTableAndLoadData();
@@ -51,6 +51,7 @@ public class ViewLessons extends JDialog {
     }
 
     public void initializeTableAndLoadData() {
+
         Title = Cdb.getCourse(courseId).getTitle();
         this.lessons = Cdb.getCourse(courseId).getLessons();
         if (this.lessons == null) {
@@ -273,7 +274,7 @@ public class ViewLessons extends JDialog {
             frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
         }
-        //wait for child to finish
+        // wait for child to finish
         try {
             initializeTableAndLoadData();
         } catch (Exception e) {
@@ -296,7 +297,7 @@ public class ViewLessons extends JDialog {
                 "Confirm Edit", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            JDialog frame = new LessonEditor(courseId,id,this);
+            JDialog frame = new LessonEditor(courseId, id, this);
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null);
