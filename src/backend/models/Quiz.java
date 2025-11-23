@@ -110,6 +110,14 @@ public class Quiz {
                 return q;}}
         return null;}
 
+    //VALIDATION
+    public boolean isValid() {
+        return quizId != null && !quizId.trim().isEmpty() &&
+               lessonId != null && !lessonId.trim().isEmpty() &&
+               title != null && !title.trim().isEmpty() &&
+               questions != null && !questions.isEmpty();}
+
+    
 
     
 }
