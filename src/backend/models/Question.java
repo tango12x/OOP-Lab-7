@@ -69,7 +69,13 @@ public class Question {
             String correctAnswer = options.get(correctOptionIndex);
             Collections.shuffle(options);
             correctOptionIndex = options.indexOf(correctAnswer);}}
-
+    //ADD OPTION TO THE QUESTION OPTIONS
+    public void addOption(String option) {
+        if (option != null && !option.trim().isEmpty()) {
+            if (options == null) {
+                options = new ArrayList<>();}
+            if (!options.contains(option)) {
+                options.add(option);}}}
 
     public void removeOption(int index) {
         if (options != null && index >= 0 && index < options.size()) {
