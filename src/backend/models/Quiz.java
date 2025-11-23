@@ -58,6 +58,21 @@ public class Quiz {
     public void setMaxAttempts(int maxAttempts) {
         this.maxAttempts = Math.max(0, maxAttempts);}
 
+    //CLASS METHODS 
+
+    //CALCULATE THE TOTAL QUESTION POINTS OF THE QUIZ 
+    public int getTotalPoints() {
+        int total = 0;
+        for (Question q : questions) {
+            total += q.getPoints();}
+        return total;}
+    
+    //RETURN THE NUMBER OF THE QUESTIONS IN THE QUIZ
+    public int getQuestionCount() {
+        return questions.size();}
+
+    
+
 
     
 }
