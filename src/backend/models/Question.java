@@ -58,17 +58,20 @@ public class Question {
     //CHECK IF THE CHOSEN OPTION MAPS TO THE CORRECT ANSWER 
     public boolean isCorrectAnswer(int selectedIndex) {
         return selectedIndex == correctOptionIndex;}
+
     //RETURNS THE CORRECT ANSWER USING CORRECT OPTION INDEX
     public String getCorrectAnswerText() {
         if (correctOptionIndex >= 0 && correctOptionIndex < options.size()) {
             return options.get(correctOptionIndex);}
         return "";}
+
     //SHUFFLING THE OPTIONS 
     public void shuffleOptions() {
         if (options != null && options.size() > 1) {
             String correctAnswer = options.get(correctOptionIndex);
             Collections.shuffle(options);
             correctOptionIndex = options.indexOf(correctAnswer);}}
+
     //ADD OPTION TO THE QUESTION OPTIONS
     public void addOption(String option) {
         if (option != null && !option.trim().isEmpty()) {
@@ -77,17 +80,14 @@ public class Question {
             if (!options.contains(option)) {
                 options.add(option);}}}
 
+    //REMOVE OPTION FROM OPTIONS THEN UPDATE CORRECT INDEX
     public void removeOption(int index) {
         if (options != null && index >= 0 && index < options.size()) {
-            // If removing the correct option, reset correct option index
             if (index == correctOptionIndex) {
                 correctOptionIndex = -1;
             } else if (index < correctOptionIndex) {
-                correctOptionIndex--;
-            }
-            options.remove(index);
-        }
-    }
+                correctOptionIndex--;}
+            options.remove(index);}}
 
     // Validation methods
     public boolean isValid() {
