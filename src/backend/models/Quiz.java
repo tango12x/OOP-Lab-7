@@ -3,47 +3,48 @@ package backend.models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collections;
+import java.util.Objects;
 
 public class Quiz {
+
+    //CLASS ATTRIBUTES 
     private String quizId;
     private String lessonId;
     private String title;
     private String description;
     private ArrayList<Question> questions;
-    private int timeLimit; // in minutes, 0 means no time limit
-    private int passingScore; // percentage required to pass
-    private int maxAttempts; // 0 means unlimited attempts
-    private boolean shuffleQuestions;
-    private boolean shuffleOptions;
-    private Date createdAt;
-    private Date updatedAt;
+    private int passingScore;      
+    private int maxAttempts;
 
-    // Constructors
+    // CONSTRUCTOR WITH DEFAULT VALUES 
     public Quiz(String quizId, String lessonId, String title) {
         this.quizId = quizId;
         this.lessonId = lessonId;
         this.title = title;
         this.description = "";
         this.questions = new ArrayList<>();
-        this.timeLimit = 0;
-        this.passingScore = 70; // default 70%
-        this.maxAttempts = 3; // default 3 attempts
-        this.shuffleQuestions = false;
-        this.shuffleOptions = false;
-        this.createdAt = new Date();
-        this.updatedAt = new Date();
+        this.passingScore = 70;
+        this.maxAttempts = 3;
     }
 
+    // FULL CLASS CONSTRUCTOR
     public Quiz(String quizId, String lessonId, String title, String description, 
-                int timeLimit, int passingScore, int maxAttempts) {
+                 int passingScore, int maxAttempts) {
         this(quizId, lessonId, title);
         this.description = description != null ? description : "";
-        this.timeLimit = Math.max(0, timeLimit);
         this.passingScore = Math.max(0, Math.min(100, passingScore));
-        this.maxAttempts = Math.max(0, maxAttempts);
+        this.maxAttempts = Math.max(0, maxAttempts);}
+
+    // CONSTRUCTOR TO DEAL WITH JSON
+    public Quiz() {
+        // Required for JSON deserialization
+        this.questions = new ArrayList<>();
+        this.description = "";
+        this.passingScore = 70;
+        this.maxAttempts = 0;
     }
 
-    // Getters and Setters
+    // GETTERS AND SETTERS
     public String getQuizId() { return quizId; }
     public void setQuizId(String quizId) { 
         this.quizId = quizId; 
