@@ -89,7 +89,8 @@ public class Quiz {
        return (calculateScore(answers) * 100.0) / total;}
     
     //IS PASSING METHOD
-    
+    public boolean isPassed(ArrayList<Integer> answers) {
+       return calculatePercentage(answers) >= passingScore;}
 
 
     
