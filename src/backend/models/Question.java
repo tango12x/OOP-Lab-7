@@ -1,16 +1,14 @@
-package backend.models;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Question {
+    //CLASS ATTRIBUTES
     private String questionId;
     private String questionText;
-    private ArrayList<String> options;
-    private int correctOptionIndex;
-    private String explanation;
-    private int points;
+    private List<String> options;          
+    private int correctOptionIndex;        
+    private String explanation;            
+    private int points;               
 
     // Constructor
     public Question(String questionId, String questionText, ArrayList<String> options, 
