@@ -22,11 +22,10 @@ public class Question {
         this.explanation = explanation;
         this.points = points;}
 
-    // Constructor without explanation and points (default values)
+    // CLASS CONSTRUCTOR WITH NO EXPLANATION AND DEFAULT POINTS VALUE
     public Question(String questionId, String questionText, ArrayList<String> options, 
                    int correctOptionIndex) {
-        this(questionId, questionText, options, correctOptionIndex, "", 1);
-    }
+        this(questionId, questionText, options, correctOptionIndex, "", 1);}
 
     // Getters and Setters
     public String getQuestionId() { return questionId; }
