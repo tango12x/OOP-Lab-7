@@ -82,6 +82,15 @@ public class Quiz {
             score += questions.get(i).getPoints();}}
     return score;}
 
+    //CALCAULATE THE PERCENTAGE OF THE QUIZ
+    public double calculatePercentage(ArrayList<Integer> answers) {
+       int total = getTotalPoints();
+       if (total == 0) return 0.0;
+       return (calculateScore(answers) * 100.0) / total;}
+    
+    //IS PASSING METHOD
+    
+
 
     
 }
