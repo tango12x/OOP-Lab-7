@@ -8,6 +8,7 @@ import backend.models.parents.User;
 public class Student extends User {
     private ArrayList<String> enrolledCourses;
     private ArrayList<ArrayList<String>> progress;
+    private ArrayList<Certificate> certificates;
     //RELATION BETWEEN COURSES AND STUDENT IS AGGREGATION
     //RELATION BETWEEN PROGRESS AND STUDENT IS AGGREGATION
 
@@ -16,12 +17,14 @@ public class Student extends User {
         super(userId, "student", username, email, passwordHash);
         this.enrolledCourses = new ArrayList<String>();
         this.progress = new ArrayList<ArrayList<String>>();
+        this.certificates = new ArrayList<Certificate>();
     }
     //OVERLOADING CONSTRUCTOR IN CASE OF ID IS NOT GIVEN
     public Student(String username, String email, String passwordHash) {
         super("student", username, email, passwordHash);
         this.enrolledCourses = new ArrayList<String>();
         this.progress = new ArrayList<ArrayList<String>>();
+        this.certificates = new ArrayList<Certificate>();
     }
 
     //standard getters and setters
@@ -37,6 +40,12 @@ public class Student extends User {
     }
     public void setProgress(ArrayList<ArrayList<String>> progress) {
         this.progress = progress;
+    }
+    public ArrayList<Certificate> getCertificates() {
+        return certificates;
+    }
+    public void setCertificates(ArrayList<Certificate> certificates) {
+        this.certificates = certificates;
     }
 
     //ENROLL COURSE IF NOT ALREADY ENROLLED
@@ -73,6 +82,9 @@ public class Student extends User {
                 return true;}
             }
             return false;
+    }
+    public void addCertificate(Certificate certificate) {
+        certificates.add(certificate);
     }
 
 }

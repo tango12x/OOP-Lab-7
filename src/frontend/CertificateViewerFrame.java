@@ -1,7 +1,8 @@
 package frontend;
 
-import backend.models.*;
-import backend.services.*;
+import backend.models.Certificate;
+import backend.services.CertificatePDFGenerator;
+import frontend.Instructor.InstructorDashboard;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,11 +21,8 @@ import java.io.File;
  * - Responsive layout for different certificate sizes
  * - Status feedback for PDF generation
  */
-public class CertificateViewerFrame extends JFrame {
+public class CertificateViewerFrame extends javax.swing.JFrame {
     private Certificate certificate;
-    private JEditorPane certificateDisplay;
-    private JButton btnExportPDF;
-    private JButton btnClose;
 
     /**
      * Constructor for creating certificate viewer window
@@ -33,6 +31,7 @@ public class CertificateViewerFrame extends JFrame {
      */
     public CertificateViewerFrame(Certificate certificate) {
         this.certificate = certificate;
+        initComponents();
         initializeUI();
         setupEventHandlers();
     }
@@ -45,68 +44,14 @@ public class CertificateViewerFrame extends JFrame {
         // Set window properties
         setTitle("Certificate - " + certificate.getCertificateId());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(700, 600);
         setLocationRelativeTo(null); // Center on screen
         setResizable(true);
 
-        // Create main panel with border
-        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
-        mainPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
-        mainPanel.setBackground(Color.WHITE);
-
-        // Create certificate display area
-        certificateDisplay = new JEditorPane();
+        // Set certificate display content
         certificateDisplay.setContentType("text/html");
         certificateDisplay.setText(certificate.toHTMLFormat());
         certificateDisplay.setEditable(false);
         certificateDisplay.setBackground(Color.WHITE);
-
-        // Wrap in scroll pane for large certificates
-        JScrollPane scrollPane = new JScrollPane(certificateDisplay);
-        scrollPane.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        scrollPane.setPreferredSize(new Dimension(650, 450));
-
-        // Create button panel
-        JPanel buttonPanel = createButtonPanel();
-
-        // Add components to main panel
-        mainPanel.add(scrollPane, BorderLayout.CENTER);
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        // Set content and make visible
-        setContentPane(mainPanel);
-        pack(); // Adjust window size to fit content
-    }
-
-    /**
-     * Creates the control panel with action buttons
-     * 
-     * @return JPanel containing export and close buttons
-     */
-    private JPanel createButtonPanel() {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        panel.setBackground(Color.WHITE);
-
-        // Create PDF export button
-        btnExportPDF = new JButton("Export as PDF");
-        btnExportPDF.setFont(new Font("Arial", Font.BOLD, 14));
-        btnExportPDF.setBackground(new Color(52, 152, 219)); // Blue color
-        btnExportPDF.setForeground(Color.WHITE);
-        btnExportPDF.setFocusPainted(false);
-        btnExportPDF.setToolTipText("Save certificate as PDF file");
-
-        // Create close button
-        btnClose = new JButton("Close");
-        btnClose.setFont(new Font("Arial", Font.PLAIN, 14));
-        btnClose.setBackground(new Color(149, 165, 166)); // Gray color
-        btnClose.setForeground(Color.WHITE);
-        btnClose.setFocusPainted(false);
-
-        // Add buttons to panel
-        panel.add(btnExportPDF);
-        panel.add(btnClose);
-
-        return panel;
     }
 
     /**
@@ -137,64 +82,34 @@ public class CertificateViewerFrame extends JFrame {
      */
     private void exportCertificateAsPDF() {
         try {
-            // Show enhanced option dialog
-            String[] options = {
-                    "High-Quality PDF (Recommended)",
-                    "High-Quality PNG Image",
-                    "Text PDF Document",
-                    "Cancel"
-            };
+            // Show PDF export confirmation
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "Generate high-quality PDF certificate?\n\n" +
+                            "This will create a professional PDF document with:\n" +
+                            "• Vector graphics for sharp printing\n" +
+                            "• Professional certificate design\n" +
+                            "• All certificate details and security features\n" +
+                            "• Landscape orientation optimized for certificates",
+                    "Generate PDF Certificate",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
 
-            int choice = JOptionPane.showOptionDialog(this,
-                    "Choose export format:\n\n" +
-                            "• High-Quality PDF: Best for printing and sharing\n" +
-                            "• PNG Image: Maximum quality, can be printed as PDF\n" +
-                            "• Text PDF: Simple document version",
-                    "Export Certificate",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
-
-            if (choice == 3 || choice == JOptionPane.CLOSED_OPTION) {
+            if (confirm != JOptionPane.YES_OPTION) {
                 return; // User cancelled
             }
 
             JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Save Certificate");
+            fileChooser.setDialogTitle("Save Certificate as PDF");
 
-            String baseFilename = "Certificate_" +
+            // Suggest professional filename
+            String suggestedFilename = "Certificate_" +
                     certificate.getStudentName().replace(" ", "_") + "_" +
-                    certificate.getCourseTitle().replace(" ", "_");
-
-            String suggestedFilename = baseFilename;
-            String fileFilterDescription = "";
-
-            switch (choice) {
-                case 0: // High-Quality PDF
-                    suggestedFilename += ".pdf";
-                    fileFilterDescription = "PDF Files (*.pdf)";
-                    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-                            fileFilterDescription, "pdf"));
-                    break;
-
-                case 1: // PNG Image
-                    suggestedFilename += ".png";
-                    fileFilterDescription = "PNG Image Files (*.png)";
-                    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-                            fileFilterDescription, "png"));
-                    break;
-
-                case 2: // Text PDF
-                    suggestedFilename += ".pdf";
-                    fileFilterDescription = "PDF Files (*.pdf)";
-                    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-                            fileFilterDescription, "pdf"));
-                    break;
-            }
-
+                    certificate.getCourseTitle().replace(" ", "_") + ".pdf";
             fileChooser.setSelectedFile(new File(suggestedFilename));
+
+            // Set PDF file filter
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
+                    "PDF Documents (*.pdf)", "pdf"));
 
             int userSelection = fileChooser.showSaveDialog(this);
 
@@ -202,44 +117,80 @@ public class CertificateViewerFrame extends JFrame {
                 File fileToSave = fileChooser.getSelectedFile();
                 String filePath = fileToSave.getAbsolutePath();
 
-                boolean success = false;
-                String message = "";
-
-                switch (choice) {
-                    case 0: // High-Quality PDF
-                        success = CertificatePDFGenerator.generatePDF(certificate, filePath);
-                        message = success ? "High-quality PDF generation initiated!\n\n" +
-                                "Please follow these steps:\n" +
-                                "1. Select 'Microsoft Print to PDF' as printer\n" +
-                                "2. Choose save location in the print dialog\n" +
-                                "3. The PDF will have the same quality as the PNG version"
-                                : "PDF generation failed or was cancelled.";
-                        break;
-
-                    case 1: // PNG Image
-                        success = CertificatePDFGenerator.generateImageCertificate(certificate, filePath);
-                        message = success ? "High-quality PNG image saved successfully!\n\n" +
-                                "You can print this image as PDF using:\n" +
-                                "• Right-click → Print → Select 'Microsoft Print to PDF'\n" +
-                                "• Or open in any image viewer and use Print to PDF"
-                                : "Failed to generate high-quality image.";
-                        break;
-
-                    case 2: // Text PDF
-                        success = CertificatePDFGenerator.generateFormattedTextPDF(certificate, filePath);
-                        message = success ? "Text PDF document generated successfully!"
-                                : "Failed to generate text PDF.";
-                        break;
+                // Ensure PDF extension and make final for lambda usage
+                if (!filePath.toLowerCase().endsWith(".pdf")) {
+                    filePath += ".pdf";
                 }
 
-                JOptionPane.showMessageDialog(this, message,
-                        success ? "Export Successful" : "Export Failed",
-                        success ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE);
-            }
+                // Create final variable for use in lambda
+                final String finalFilePath = filePath;
 
+                // Show progress dialog
+                JDialog progressDialog = new JDialog(this, "Generating PDF...", true);
+                progressDialog.setSize(300, 100);
+                progressDialog.setLocationRelativeTo(this);
+                progressDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+
+                JPanel progressPanel = new JPanel(new BorderLayout());
+                progressPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+                progressPanel.add(new JLabel("Generating high-quality PDF certificate...", JLabel.CENTER),
+                        BorderLayout.CENTER);
+                progressDialog.add(progressPanel);
+
+                // Use SwingWorker to avoid blocking the UI
+                SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+                    @Override
+                    protected Boolean doInBackground() throws Exception {
+                        return CertificatePDFGenerator.generatePDF(certificate, finalFilePath);
+                    }
+
+                    @Override
+                    protected void done() {
+                        progressDialog.dispose();
+                        try {
+                            boolean success = get();
+
+                            if (success) {
+                                JOptionPane.showMessageDialog(CertificateViewerFrame.this,
+                                        "✓ High-quality PDF certificate generated successfully!\n\n" +
+                                                "File: " + new File(finalFilePath).getName() + "\n" +
+                                                "Location: " + new File(finalFilePath).getParent() + "\n\n" +
+                                                "The PDF contains:\n" +
+                                                "• Professional certificate design\n" +
+                                                "• Vector graphics for perfect printing\n" +
+                                                "• All student and course details\n" +
+                                                "• Security features and verification\n\n" +
+                                                "You can now print or share this professional certificate.",
+                                        "PDF Generation Complete",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                JOptionPane.showMessageDialog(CertificateViewerFrame.this,
+                                        "PDF generation was cancelled or failed.\n" +
+                                                "Please ensure you have a PDF printer available\n" +
+                                                "(like 'Microsoft Print to PDF' on Windows).",
+                                        "PDF Generation",
+                                        JOptionPane.WARNING_MESSAGE);
+                            }
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(CertificateViewerFrame.this,
+                                    "Error generating PDF: " + ex.getMessage() + "\n\n" +
+                                            "Please ensure:\n" +
+                                            "1. You have a PDF printer installed\n" +
+                                            "2. You have write permissions to the save location\n" +
+                                            "3. The file is not open in another program",
+                                    "PDF Generation Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                            ex.printStackTrace();
+                        }
+                    }
+                };
+
+                worker.execute();
+                progressDialog.setVisible(true);
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,
-                    "Error during export: " + ex.getMessage(),
+                    "Unexpected error during PDF export: " + ex.getMessage(),
                     "Export Error",
                     JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -256,13 +207,101 @@ public class CertificateViewerFrame extends JFrame {
     }
 
     /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        certificateDisplay = new javax.swing.JEditorPane();
+        jPanel2 = new javax.swing.JPanel();
+        btnExportPDF = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Certificate Viewer");
+        setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        certificateDisplay.setBackground(new java.awt.Color(255, 255, 255));
+        certificateDisplay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jScrollPane1.setViewportView(certificateDisplay);
+
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        btnExportPDF.setBackground(new java.awt.Color(0, 0, 255));
+        btnExportPDF.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnExportPDF.setForeground(new java.awt.Color(0, 0, 0));
+        btnExportPDF.setText("Export as PDF");
+        btnExportPDF.setFocusPainted(false);
+        btnExportPDF.setToolTipText("Save certificate as PDF file");
+
+        btnClose.setBackground(new java.awt.Color(0, 0, 0));
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(0, 0, 0));
+        btnClose.setText("Close");
+        btnClose.setFocusPainted(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(263, Short.MAX_VALUE)
+                                .addComponent(btnExportPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 140,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 140,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(239, Short.MAX_VALUE)));
+        jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnExportPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap()));
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /**
      * Main method for testing the certificate viewer
      * Creates a sample certificate and displays it
      */
-    public static void main(String[] args) {
-        // Test certificate creation and display
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
+    public static void main(String args[]) {
+        // Set system look and feel
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        }
+
+        // Create and display the form
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     // Create sample certificate for testing
@@ -276,7 +315,8 @@ public class CertificateViewerFrame extends JFrame {
 
                     // Create and display certificate viewer
                     CertificateViewerFrame viewer = new CertificateViewerFrame(testCertificate);
-                    viewer.showCertificate();
+                    viewer.setVisible(true);
+                    viewer.setLocationRelativeTo(null);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -288,4 +328,13 @@ public class CertificateViewerFrame extends JFrame {
             }
         });
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnExportPDF;
+    private javax.swing.JEditorPane certificateDisplay;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    // End of variables declaration//GEN-END:variables
 }

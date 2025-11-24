@@ -110,6 +110,9 @@ public class ReadWrite {
                             if (student.getProgress() == null) {
                                 student.setProgress(new ArrayList<ArrayList<String>>());
                             }
+                            if (student.getCertificates() == null) {
+                                student.setCertificates(new ArrayList<Certificate>());
+                            }
                             return student;
                             
                         case "instructor":
