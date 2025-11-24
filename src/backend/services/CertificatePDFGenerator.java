@@ -1,6 +1,6 @@
 package backend.services;
 
-import backend.models.Certificate;
+import backend.models.*;
 
 import javax.swing.*;
 import java.awt.*;
