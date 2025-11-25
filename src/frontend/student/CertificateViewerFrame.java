@@ -1,4 +1,4 @@
-package frontend;
+package frontend.student;
 
 import backend.models.Certificate;
 import backend.services.CertificatePDFGenerator;

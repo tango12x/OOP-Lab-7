@@ -1,4 +1,4 @@
-package frontend;
+package frontend.student;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -8,6 +8,7 @@ import backend.models.Course;
 import backend.models.Instructor;
 import backend.models.Lesson;
 import backend.services.StudentService;
+import frontend.Login;
 import frontend.util.*;
 
 //! possible error sources are labelled (PES) for easy search
@@ -135,7 +136,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblLessons = new javax.swing.JTable();
         btnViewLessons = new javax.swing.JButton();
-        btnMarkCompleted = new javax.swing.JButton();
+        btnTakeLesson = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnRefresh = new javax.swing.JButton();
 
@@ -251,13 +252,13 @@ public class StudentDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnMarkCompleted.setBackground(new java.awt.Color(0, 204, 0));
-        btnMarkCompleted.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnMarkCompleted.setForeground(new java.awt.Color(255, 255, 255));
-        btnMarkCompleted.setText("Mark as Completed");
-        btnMarkCompleted.addActionListener(new java.awt.event.ActionListener() {
+        btnTakeLesson.setBackground(new java.awt.Color(0, 204, 0));
+        btnTakeLesson.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnTakeLesson.setForeground(new java.awt.Color(255, 255, 255));
+        btnTakeLesson.setText("Take Lesson");
+        btnTakeLesson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMarkCompletedActionPerformed(evt);
+                btnTakeLessonActionPerformed(evt);
             }
         });
 
@@ -285,7 +286,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                                                                         .addComponent(btnViewLessons)
                                                                         .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                        .addComponent(btnMarkCompleted))
+                                                                        .addComponent(btnTakeLesson))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING,
                                                                 jPanel3Layout.createSequentialGroup()
                                                                         .addGap(6, 6, 6)
@@ -305,7 +306,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnViewLessons)
-                                        .addComponent(btnMarkCompleted))
+                                        .addComponent(btnTakeLesson))
                                 .addContainerGap()));
 
         jTabbedPane2.addTab("My Courses", jPanel3);
@@ -495,7 +496,7 @@ public class StudentDashboard extends javax.swing.JFrame {
      * Marks the selected lesson as completed
      * ========================================================================
      */
-    private void btnMarkCompletedActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMarkCompletedActionPerformed
+    private void btnTakeLessonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTakeLessonActionPerformed
         int selectedRow = tblLessons.getSelectedRow();
         if (selectedRow == -1) {
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -532,7 +533,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                     "Lesson marked as completed!",
                     "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
-    }// GEN-LAST:event_btnMarkCompletedActionPerformed
+    }// GEN-LAST:event_btnTakeLessonActionPerformed
 
     /**
      * ========================================================================
@@ -655,7 +656,7 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel LblStudentInfo;
     private javax.swing.JButton btnEnroll;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnMarkCompleted;
+    private javax.swing.JButton btnTakeLesson;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewLessons;
     private javax.swing.JLabel jLabel1;

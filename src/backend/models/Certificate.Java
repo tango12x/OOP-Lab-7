@@ -28,25 +28,22 @@ public class Certificate {
     private double finalScore;
     private String certificateUrl; // Optional: path to stored PDF file
 
-    UsersDatabaseManager Udb;
 
     /**
      * Primary constructor for creating new certificates
      * Automatically generates certificate ID and sets current date
      */
-    public Certificate(Student student, Course course, double finalScore) {
+    public Certificate(Student student, Course course,String instructorName , double finalScore) {
         try {
-            Udb = new UsersDatabaseManager();
             this.certificateId = generateCertificateId(); // Auto-generate unique ID
             this.studentId = student.getUserId();
             this.studentName = student.getUserId();
             this.courseId = course.getCourseId();
             this.courseTitle = course.getTitle();
-            this.instructorName = Udb.getUser(course.getInstructorId()).getUsername();
+            this.instructorName = instructorName;
             this.finalScore = finalScore;
             this.issueDate = new Date(); // Set to current date/time
         } catch (Exception e) {
-            if(Udb == null) System.out.println("Certificate: UsersDatabaseManager not found.");
             if(student == null) System.out.println("Certificate: Student not found.");
             if(course == null) System.out.println("Certificate: Course not found.");
             if(finalScore < 0) System.out.println("Certificate: Final score is negative.");

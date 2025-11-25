@@ -6,7 +6,8 @@
     "role": "student",
     "username": "AYmen",
     "email": "email1@gmail.com",
-    "passwordHash": "passwordHash"
+    "passwordHash": "passwordHash",
+    "certificates": []
   },
   {
     "createdCourses": [],
@@ -42,7 +43,8 @@
     "role": "student",
     "username": "AYmen",
     "email": "email5@gmail.com",
-    "passwordHash": "passwordHash"
+    "passwordHash": "passwordHash",
+    "certificates": []
   },
   {
     "enrolledCourses": [],
@@ -51,7 +53,8 @@
     "role": "student",
     "username": "Gamal",
     "email": "email6@gmail.com",
-    "passwordHash": "passwordHash2"
+    "passwordHash": "passwordHash2",
+    "certificates": []
   },
   {
     "createdCourses": [],
@@ -80,7 +83,8 @@
     "role": "student",
     "username": "Gamal",
     "email": "email2@gmail.com",
-    "passwordHash": "passwordHash2"
+    "passwordHash": "passwordHash2",
+    "certificates": []
   },
   {
     "createdCourses": [

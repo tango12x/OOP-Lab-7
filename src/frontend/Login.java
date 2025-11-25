@@ -4,6 +4,7 @@ import backend.databaseManager.*;
 import backend.models.parents.User;
 import backend.services.AuthManager;
 import frontend.Instructor.*;
+import frontend.student.StudentDashboard;
 
 import javax.swing.JFrame;
 

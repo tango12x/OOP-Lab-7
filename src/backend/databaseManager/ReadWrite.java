@@ -119,7 +119,7 @@ public class ReadWrite {
                             Instructor instructor = context.deserialize(jsonObject, Instructor.class);
                             // Ensure collections are never null
                             if (instructor.getCreatedCourses() == null) {
-                                instructor.setCreatedCourses(new ArrayList<>());
+                                instructor.setCreatedCourses(new ArrayList<String>());
                             }
                             return instructor;
                          case "admin":
