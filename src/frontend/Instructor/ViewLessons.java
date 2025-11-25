@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import backend.models.*;
 import backend.databaseManager.*;
@@ -334,6 +335,26 @@ public class ViewLessons extends JDialog {
             e.printStackTrace();
         }
     }// GEN-LAST:event_btnDeleteLessonActionPerformed
+
+    private void manageQuizForLesson() {
+        int selectedRow = lessonsTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select a lesson to manage its quiz.",
+                    "No Selection", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String lessonId = (String) lessonsModel.getValueAt(selectedRow, 0);
+        String lessonTitle = (String) lessonsModel.getValueAt(selectedRow, 1);
+
+        QuizEditorFrame quizEditor = new QuizEditorFrame(
+                (JFrame) this.getParent(),
+                courseId,
+                lessonId,
+                Cdb.getCourse(courseId).getInstructorId());
+        quizEditor.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
