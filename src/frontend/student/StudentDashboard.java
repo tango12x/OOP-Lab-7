@@ -1,12 +1,16 @@
 package frontend.student;
 
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import backend.databaseManager.CourseDatabaseManager;
+import backend.databaseManager.UsersDatabaseManager;
 import backend.models.Course;
 import backend.models.Instructor;
 import backend.models.Lesson;
+import backend.models.Student;
 import backend.services.StudentQuizService;
 import backend.services.StudentService;
 import frontend.Login;
@@ -31,6 +35,8 @@ public class StudentDashboard extends javax.swing.JFrame {
         // Current student information
         private String currentStudentId;
         private String currentStudentName;
+        private CourseDatabaseManager Cdb;
+        private UsersDatabaseManager Udb;
 
         // Table models for dynamic data
         private javax.swing.table.DefaultTableModel availableCoursesModel;
@@ -48,6 +54,8 @@ public class StudentDashboard extends javax.swing.JFrame {
                 this.currentStudentId = studentId;
                 this.currentStudentName = studentName;
                 SS = new StudentService(currentStudentId);
+                Cdb = new CourseDatabaseManager();
+                Udb = new UsersDatabaseManager();
                 initComponents();
                 initializeEnhancedFeatures();
         }
@@ -550,30 +558,48 @@ public class StudentDashboard extends javax.swing.JFrame {
                 String lessonId = (String) lessonsModel.getValueAt(selectedRow, 1);
                 String lessonTitle = (String) lessonsModel.getValueAt(selectedRow, 2);
 
-                // Check if already completed
-                String isCompleted = (String) lessonsModel.getValueAt(selectedRow, 0);
-                if (isCompleted != null && isCompleted == "Completed") {
-                        javax.swing.JOptionPane.showMessageDialog(this,
-                                        "This lesson is already marked as completed.",
-                                        "Already Completed", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                        return;
+                if (SS.getCompletedLesson(courseIdForCurrentLesson).size() == Cdb.getCourse(courseIdForCurrentLesson)
+                                .getLessons().size()) {
+                        if (((Student) Udb.getUser(currentStudentId)).getEnrolledCourses()
+                                        .get(courseIdForCurrentLesson).getCertificate() == null) {
+                                backend.models.Certificate cert = SS.generateCertificate(courseIdForCurrentLesson);
+                                JFrame frame = new CertificateViewerFrame(cert);
+                                frame.setVisible(true);
+                                frame.setLocationRelativeTo(null);
+                                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                        }
+                        JFrame frame = new CertificateViewerFrame(
+                                        ((Student) Udb.getUser(currentStudentId)).getEnrolledCourses()
+                                                        .get(courseIdForCurrentLesson).getCertificate());
+                        frame.setVisible(true);
+                        frame.setLocationRelativeTo(null);
+                        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                } else {
+                        // Check if already completed
+                        String isCompleted = (String) lessonsModel.getValueAt(selectedRow, 0);
+                        if (isCompleted != null && isCompleted == "Completed") {
+                                javax.swing.JOptionPane.showMessageDialog(this,
+                                                "This lesson is already marked as completed.",
+                                                "Already Completed", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                                return;
+                        }
+
+                        StudentQuizService SQ = new StudentQuizService(currentStudentId);
+                        QuizFrame frame = new QuizFrame(currentStudentId, courseIdForCurrentLesson,
+                                        lessonId, SQ.getQuizForLesson(courseIdForCurrentLesson, lessonId));
+                        frame.setVisible(true);
+                        frame.setLocationRelativeTo(null);
                 }
 
-                StudentQuizService SQ = new StudentQuizService(currentStudentId);
-                QuizFrame frame = new QuizFrame(currentStudentId, courseIdForCurrentLesson,
-                                lessonId, SQ.getQuizForLesson(courseIdForCurrentLesson, lessonId));
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-
                 // try {
-                //         SS.markLessonCompleted(courseIdForCurrentLesson, lessonId);
+                // SS.markLessonCompleted(courseIdForCurrentLesson, lessonId);
                 // } catch (Exception e) {
-                //         e.printStackTrace();
+                // e.printStackTrace();
                 // }
                 // lessonsModel.setValueAt("Completed", selectedRow, 0);
                 // javax.swing.JOptionPane.showMessageDialog(this,
-                //                 "Lesson marked as completed!",
-                //                 "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                // "Lesson marked as completed!",
+                // "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         }// GEN-LAST:event_btnTakeLessonActionPerformed
 

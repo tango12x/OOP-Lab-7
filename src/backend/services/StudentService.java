@@ -125,7 +125,7 @@ public class StudentService {
 
     //!NTST
     // GENERATE CERTIFICATE
-    private Certificate generateCertificate(String courseID) {
+    public Certificate generateCertificate(String courseID) {
         System.out.println("Generating certificate for course: " + courseID + " for student: " + student.getUserId());
         String studentId = student.getUserId();
         String studentName = student.getUsername();

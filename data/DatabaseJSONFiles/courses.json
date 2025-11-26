@@ -252,7 +252,9 @@
         ]
       }
     ],
-    "students": [],
+    "students": [
+      "U2"
+    ],
     "approvalStatus": "APPROVED",
     "approvedBy": null
   },
@@ -331,6 +333,138 @@
       }
     ],
     "students": [
+      "U2"
+    ],
+    "approvalStatus": "APPROVED",
+    "approvedBy": "U9"
+  },
+  {
+    "courseId": "C18",
+    "title": "dkdkkdkdkdkkdkkdkddk",
+    "instructorId": "U7",
+    "description": "dmkdkdk",
+    "lessons": [
+      {
+        "lessonId": "L1",
+        "title": "dldldlldll",
+        "content": "kdkkdkdld",
+        "courseId": "C18",
+        "quiz": {
+          "quizId": "QZL1",
+          "lessonId": "L1",
+          "title": "dldldlldll",
+          "description": "",
+          "questions": [
+            {
+              "questionId": "Question-1",
+              "questionText": "nlnxlxnllx",
+              "options": [
+                ",cnlnlncl"
+              ],
+              "correctOption": ",cnlnlncl",
+              "explanation": "cccc",
+              "points": 50
+            },
+            {
+              "questionId": "Question-2",
+              "questionText": "clcjllmddnldnln",
+              "options": [
+                "dljldmlmd"
+              ],
+              "correctOption": "dljldmlmd",
+              "explanation": "ldkldnlnd",
+              "points": 50
+            }
+          ],
+          "passingScore": 50,
+          "maxAttempts": 0
+        },
+        "optionalResources": [
+          "ldlmdldmldm;"
+        ]
+      },
+      {
+        "lessonId": "L2",
+        "title": "dlndlnd",
+        "content": "nmldnl",
+        "courseId": "C18",
+        "quiz": {
+          "quizId": "QZL2",
+          "lessonId": "L2",
+          "title": "dlndlnd",
+          "description": "",
+          "questions": [
+            {
+              "questionId": "Question-1",
+              "questionText": "d.l.dnld",
+              "options": [
+                "lmdl"
+              ],
+              "correctOption": "lmdl",
+              "explanation": "dohod",
+              "points": 100
+            }
+          ],
+          "passingScore": 50,
+          "maxAttempts": 0
+        },
+        "optionalResources": []
+      }
+    ],
+    "students": [
+      "U2",
+      "U10"
+    ],
+    "approvalStatus": "APPROVED",
+    "approvedBy": "U9"
+  },
+  {
+    "courseId": "C19",
+    "title": "hshshh",
+    "instructorId": "U3",
+    "description": "jsjjsjsj",
+    "lessons": [
+      {
+        "lessonId": "L1",
+        "title": "sioipssi",
+        "content": "ksksksk",
+        "courseId": "C19",
+        "quiz": {
+          "quizId": "QZL1",
+          "lessonId": "L1",
+          "title": "sioipssi",
+          "description": "",
+          "questions": [
+            {
+              "questionId": "Question-1",
+              "questionText": "hshhhshsskksk",
+              "options": [
+                "jjsjsjjs",
+                "jkkkkkkkkkkkkkk"
+              ],
+              "correctOption": "jkkkkkkkkkkkkkk",
+              "explanation": "sjjsjsjs",
+              "points": 49
+            },
+            {
+              "questionId": "Question-2",
+              "questionText": "skksk",
+              "options": [
+                "jmsjks"
+              ],
+              "correctOption": "jmsjks",
+              "explanation": ",lsks",
+              "points": 51
+            }
+          ],
+          "passingScore": 50,
+          "maxAttempts": 0
+        },
+        "optionalResources": []
+      }
+    ],
+    "students": [
+      "U10",
       "U2"
     ],
     "approvalStatus": "APPROVED",

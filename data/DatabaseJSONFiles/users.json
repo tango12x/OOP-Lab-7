@@ -26,13 +26,14 @@
       "C9",
       "C10",
       "C11",
-      "C12"
+      "C12",
+      "C19"
     ],
     "userId": "U3",
     "role": "instructor",
     "username": "gelo",
-    "email": "email3@gmail.com",
-    "passwordHash": "passwordHash2"
+    "email": "gelo@gmail.com",
+    "passwordHash": "f11feb40fed11e44d9999326dab346c527bde1da519e9dfa963db429068f15d9"
   },
   {
     "enrolledCourses": {},
@@ -105,6 +106,44 @@
           ]
         }
       },
+      "C16": {
+        "courseId": "C16",
+        "progress": [],
+        "certificate": null,
+        "quizAttempts": {}
+      },
+      "C19": {
+        "courseId": "C19",
+        "progress": [],
+        "certificate": null,
+        "quizAttempts": {}
+      },
+      "C18": {
+        "courseId": "C18",
+        "progress": [
+          "L1",
+          "L2"
+        ],
+        "certificate": {
+          "certificateId": "CERT-00348FAF",
+          "studentId": "U2",
+          "studentName": "Gamal",
+          "courseId": "C18",
+          "courseTitle": "dkdkkdkdkdkkdkkdkddk",
+          "instructorName": "3aa",
+          "issueDate": "2025-11-26 09:02:44",
+          "finalScore": 100.0,
+          "certificateUrl": null
+        },
+        "quizAttempts": {
+          "L1": [
+            100
+          ],
+          "L2": [
+            100
+          ]
+        }
+      },
       "C1": {
         "courseId": "C1",
         "progress": [
@@ -134,7 +173,8 @@
       "C14",
       "C15",
       "C16",
-      "C17"
+      "C17",
+      "C18"
     ],
     "userId": "U7",
     "role": "instructor",
@@ -150,7 +190,56 @@
     "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
   },
   {
-    "enrolledCourses": {},
+    "enrolledCourses": {
+      "C19": {
+        "courseId": "C19",
+        "progress": [
+          "L1"
+        ],
+        "certificate": {
+          "certificateId": "CERT-3F06BF79",
+          "studentId": "U10",
+          "studentName": "galal",
+          "courseId": "C19",
+          "courseTitle": "hshshh",
+          "instructorName": "gelo",
+          "issueDate": "2025-11-26 09:40:37",
+          "finalScore": 100.0,
+          "certificateUrl": null
+        },
+        "quizAttempts": {
+          "L1": [
+            100
+          ]
+        }
+      },
+      "C18": {
+        "courseId": "C18",
+        "progress": [
+          "L1",
+          "L2"
+        ],
+        "certificate": {
+          "certificateId": "CERT-B1CA4265",
+          "studentId": "U10",
+          "studentName": "galal",
+          "courseId": "C18",
+          "courseTitle": "dkdkkdkdkdkkdkkdkddk",
+          "instructorName": "3aa",
+          "issueDate": "2025-11-26 09:15:27",
+          "finalScore": 100.0,
+          "certificateUrl": null
+        },
+        "quizAttempts": {
+          "L1": [
+            100
+          ],
+          "L2": [
+            100
+          ]
+        }
+      }
+    },
     "userId": "U10",
     "role": "student",
     "username": "galal",
