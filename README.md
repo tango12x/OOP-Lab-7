@@ -126,14 +126,6 @@ Upon successful course completion, students receive digital certificates contain
 - Issue date and certificate ID
 - Platform verification metadata
 
-## 👥 Development Team
-
-This project was developed by student teams from the Computer and Communication Engineering department, Faculty of Engineering, Alexandria University, under the supervision of course instructors and teaching assistants.
-
-## 📞 Support
-
-For technical support or issues related to the platform, please contact your course instructor or teaching assistant during designated lab hours.
-
 ---
 
 *Skill Forge - Empowering Education Through Technology*  
