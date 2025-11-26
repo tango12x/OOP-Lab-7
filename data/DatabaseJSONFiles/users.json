@@ -81,7 +81,8 @@
       "C17": {
         "courseId": "C17",
         "progress": [
-          "L1"
+          "L1",
+          "L10"
         ],
         "certificate": {
           "certificateId": "CERT-9B808020",
@@ -94,7 +95,12 @@
           "finalScore": 0.0,
           "certificateUrl": null
         },
-        "quizAttempts": {}
+        "quizAttempts": {
+          "L9": [
+            0,
+            0
+          ]
+        }
       },
       "C1": {
         "courseId": "C1",

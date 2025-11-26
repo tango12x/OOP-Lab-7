@@ -9,7 +9,6 @@ import backend.models.Student.studentCourseInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 //!NTST
 public class StudentQuizService {
     private String studentId;
@@ -27,7 +26,6 @@ public class StudentQuizService {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Get quiz for a specific lesson
@@ -89,7 +87,7 @@ public class StudentQuizService {
             if (attempts == null)
                 return true;
             int numAttempts = attempts.size();
-    
+
             return numAttempts < quiz.getMaxAttempts();
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,6 +96,21 @@ public class StudentQuizService {
 
     }
 
+    public int nextAttemptNumber(String courseId, Quiz quiz) {
+        try {
+            studentCourseInfo info = student.getEnrolledCourses().get(courseId);
+            ArrayList<Integer> attempts = info.getQuizAttempts().get(quiz.getLessonId());
+            if (attempts == null)
+                return -1;
+            int numAttempts = attempts.size();
+
+            return numAttempts + 1;
+        } catch (Exception e) {
+            e.getMessage();
+            e.printStackTrace();
+            return -1;
+        }
+    }
 
     /**
      * Mark lesson as completed when quiz is passed

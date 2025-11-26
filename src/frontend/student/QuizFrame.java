@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+//!NTST
 public class QuizFrame extends JFrame {
     private Quiz quiz;
     private String courseId;
@@ -228,12 +229,13 @@ public class QuizFrame extends JFrame {
             return;
         }
 
+        StudentQuizService SQ = new StudentQuizService(studentId);
         // Submit quiz
-        StudentQuizService.QuizAttempt attempt = quizService.submitQuiz(
+        double score = SQ.submitQuiz(
                 courseId, lessonId, quiz, studentAnswers);
 
-        if (attempt != null) {
-            showQuizResults(attempt);
+        if (score >= 0) {
+            showQuizResults(score, quiz);
         } else {
             JOptionPane.showMessageDialog(this,
                     "Error submitting quiz. Please try again.",
@@ -241,7 +243,9 @@ public class QuizFrame extends JFrame {
         }
     }
 
-    private void showQuizResults(StudentQuizService.QuizAttempt attempt) {
+    private void showQuizResults(double score , Quiz quiz) {
+        boolean isPassed = score >= quiz.getPassingScore();
+
         // Create results dialog
         JDialog resultsDialog = new JDialog(this, "Quiz Results", true);
         resultsDialog.setSize(500, 400);
@@ -252,9 +256,9 @@ public class QuizFrame extends JFrame {
         // Header
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        headerPanel.setBackground(attempt.isPassed() ? new Color(220, 255, 220) : new Color(255, 220, 220));
+        headerPanel.setBackground(isPassed ? new Color(220, 255, 220) : new Color(255, 220, 220));
         
-        JLabel resultLabel = new JLabel(attempt.isPassed() ? "🎉 Quiz Passed! 🎉" : "❌ Quiz Failed");
+        JLabel resultLabel = new JLabel(isPassed ? "🎉 Quiz Passed! 🎉" : "❌ Quiz Failed");
         resultLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
@@ -265,22 +269,18 @@ public class QuizFrame extends JFrame {
         JPanel detailsPanel = new JPanel(new GridLayout(5, 1, 10, 10));
         detailsPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         
-        detailsPanel.add(createResultRow("Score:", attempt.getScore() + " / " + quiz.getTotalPoints() + " points"));
-        detailsPanel.add(createResultRow("Percentage:", String.format("%.1f%%", attempt.getPercentage())));
+        detailsPanel.add(createResultRow("Score:", score + " / " + quiz.getTotalPoints() + " points"));
+        double percentage = (score / quiz.getTotalPoints()) * 100;
+        detailsPanel.add(createResultRow("Percentage:", String.format("%.1f%%", percentage)));
         detailsPanel.add(createResultRow("Passing Score:", quiz.getPassingScore() + "%"));
-        detailsPanel.add(createResultRow("Attempt:", "#" + attempt.getAttemptNumber()));
-        detailsPanel.add(createResultRow("Status:", attempt.isPassed() ? "PASSED" : "FAILED"));
+        detailsPanel.add(createResultRow("Attempt:", "#" + quizService.nextAttemptNumber(courseId, quiz)));
+        detailsPanel.add(createResultRow("Status:", isPassed ? "PASSED" : "FAILED"));
         
         resultsDialog.add(detailsPanel, BorderLayout.CENTER);
 
         // Action buttons
         JPanel buttonPanel = new JPanel(new FlowLayout());
         
-        JButton reviewButton = new JButton("Review Answers");
-        reviewButton.addActionListener(e -> {
-            resultsDialog.dispose();
-            showAnswerReview(attempt);
-        });
         
         JButton closeButton = new JButton("Close");
         closeButton.addActionListener(e -> {
@@ -288,7 +288,6 @@ public class QuizFrame extends JFrame {
             this.dispose();
         });
         
-        buttonPanel.add(reviewButton);
         buttonPanel.add(closeButton);
         resultsDialog.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -311,56 +310,6 @@ public class QuizFrame extends JFrame {
         return row;
     }
 
-    private void showAnswerReview(StudentQuizService.QuizAttempt attempt) {
-        JDialog reviewDialog = new JDialog(this, "Answer Review", true);
-        reviewDialog.setSize(700, 500);
-        reviewDialog.setLocationRelativeTo(this);
-        reviewDialog.setLayout(new BorderLayout());
-
-        JTextArea reviewArea = new JTextArea();
-        reviewArea.setEditable(false);
-        reviewArea.setFont(new Font("Courier New", Font.PLAIN, 12));
-        reviewArea.setMargin(new Insets(10, 10, 10, 10));
-
-        StringBuilder reviewText = new StringBuilder();
-        reviewText.append("QUIZ REVIEW - ").append(quiz.getTitle()).append("\n");
-        reviewText.append("=".repeat(50)).append("\n\n");
-
-        ArrayList<Question> questions = quiz.getQuestions();
-        ArrayList<String> studentAnswers = attempt.getStudentAnswers();
-
-        for (int i = 0; i < questions.size(); i++) {
-            Question q = questions.get(i);
-            String studentAnswer = studentAnswers.get(i);
-            String correctAnswer = q.getCorrectOption();
-            boolean isCorrect = q.isCorrectAnswer(studentAnswer);
-
-            reviewText.append("Question ").append(i + 1).append(": ").append(q.getQuestionText()).append("\n");
-            reviewText.append("Your Answer: ").append(studentAnswer.isEmpty() ? "Not answered" : studentAnswer);
-            reviewText.append(isCorrect ? " ✓ CORRECT\n" : " ✗ INCORRECT\n");
-            reviewText.append("Correct Answer: ").append(correctAnswer).append("\n");
-            
-            if (!isCorrect && !studentAnswer.isEmpty()) {
-                reviewText.append("Explanation: ").append(q.getExplanation()).append("\n");
-            }
-            
-            reviewText.append("-".repeat(50)).append("\n\n");
-        }
-
-        reviewArea.setText(reviewText.toString());
-
-        JScrollPane scrollPane = new JScrollPane(reviewArea);
-        reviewDialog.add(scrollPane, BorderLayout.CENTER);
-
-        JButton closeButton = new JButton("Close");
-        closeButton.addActionListener(e -> reviewDialog.dispose());
-        
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(closeButton);
-        reviewDialog.add(buttonPanel, BorderLayout.SOUTH);
-
-        reviewDialog.setVisible(true);
-    }
 
     public static void main(String[] args) {
         // Test method

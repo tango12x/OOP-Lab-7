@@ -9,7 +9,7 @@ public class Student extends User {
     private HashMap<String, studentCourseInfo> enrolledCourses;
 
     // CUSTOM CLASS FOR STUDENT COURSE INFO
-    public class studentCourseInfo {
+    public static class studentCourseInfo {
         private String courseId;
         private ArrayList<String> progress;
         private Certificate certificate;
@@ -88,31 +88,55 @@ public class Student extends User {
             }
         }
 
-        // ADD QUIZ ATTEMPT
+        // // ADD QUIZ ATTEMPT
+        // public void addQuizAttempt(String lessonId, int score) {
+        // if(quizAttempts == null) {
+        // quizAttempts = new HashMap<String, ArrayList<Integer>>();
+        // System.out.println("addQuizAttempt: quizAttempts is null , intiating new
+        // course attempts");
+        // }
+        // if (lessonId.trim().isEmpty() || lessonId == null) {
+        // System.out.println("addQuizAttempt: lessonId is null or empty");
+        // return;
+        // }
+        // ArrayList<Integer> lessonQuizAttempts = quizAttempts.get(lessonId);
+        // if (lessonQuizAttempts == null) {
+        // System.out.println("addQuizAttempt: lesson attempts for course ID:" +
+        // courseId +
+        // "for lesson ID:" + lessonId );
+        // // adding array list
+        // quizAttempts.put(lessonId, new ArrayList<Integer>());
+        // }
+        // lessonQuizAttempts.add(score);
+        // System.out.println("Quiz attempt added successfully for lesson: " +
+        // lessonId);
+
+        // }
+        // ADD QUIZ ATTEMPT - Fixed version
         public void addQuizAttempt(String lessonId, int score) {
-            if(quizAttempts == null) {
+            if (quizAttempts == null) {
                 quizAttempts = new HashMap<String, ArrayList<Integer>>();
-                System.out.println("addQuizAttempt: quizAttempts is null , intiating new course attempts");
+                System.out.println("addQuizAttempt: quizAttempts is null, initiating new course attempts");
             }
-            if (lessonId.trim().isEmpty() || lessonId == null) {
+            if (lessonId == null || lessonId.trim().isEmpty()) {
                 System.out.println("addQuizAttempt: lessonId is null or empty");
                 return;
             }
+
+            // Get or create the list for this lesson
             ArrayList<Integer> lessonQuizAttempts = quizAttempts.get(lessonId);
             if (lessonQuizAttempts == null) {
                 System.out.println("addQuizAttempt: lesson attempts for course ID:" + courseId +
-                        "for lesson ID:" + lessonId + " for student ID:" + getUserId() +
-                        "is null , intiating new course attempts");
-                // adding array list
-                quizAttempts.put(lessonId, new ArrayList<Integer>());
+                        " for lesson ID:" + lessonId +
+                        " is null, initiating new course attempts");
+                lessonQuizAttempts = new ArrayList<Integer>();
+                quizAttempts.put(lessonId, lessonQuizAttempts);
             }
+
+            // Now add the score - lessonQuizAttempts is guaranteed to be not null
             lessonQuizAttempts.add(score);
-            System.out.println("Quiz attempt added successfully for lesson: " + lessonId);
-            // if (score >= 70) {
-            //     markLessonComplete(lessonId);
-            //     System.out.println("Lesson completed successfully for lesson: " + lessonId
-            //             + "as quiz is passed with score: " + score + " for student: " + getUserId());
-            // }
+            System.out.println("Quiz attempt added successfully for lesson: " + lessonId +
+                    " with score: " + score);
         }
 
     }
@@ -149,7 +173,7 @@ public class Student extends User {
             return;
         }
         studentCourseInfo newCourseInfo = new studentCourseInfo(courseId);
-        enrolledCourses.put(courseId,newCourseInfo);
+        enrolledCourses.put(courseId, newCourseInfo);
     }
 
     public int numCompleted(String courseId) {

@@ -271,6 +271,63 @@
         "optionalResources": [
           "rr"
         ]
+      },
+      {
+        "lessonId": "L9",
+        "title": "vv",
+        "content": "vv",
+        "courseId": "C17",
+        "quiz": {
+          "quizId": null,
+          "lessonId": null,
+          "title": null,
+          "description": "",
+          "questions": [],
+          "passingScore": 50,
+          "maxAttempts": 0
+        },
+        "optionalResources": [
+          "vv"
+        ]
+      },
+      {
+        "lessonId": "L10",
+        "title": "tg",
+        "content": "gg",
+        "courseId": "C17",
+        "quiz": {
+          "quizId": "QZL10",
+          "lessonId": "L10",
+          "title": "tg",
+          "description": "",
+          "questions": [
+            {
+              "questionId": "Question-2",
+              "questionText": "vv",
+              "options": [
+                "vv"
+              ],
+              "correctOption": "vv",
+              "explanation": "vvv",
+              "points": 2
+            },
+            {
+              "questionId": "Question-2",
+              "questionText": "ttttttttttttttttttttttttttttttttt",
+              "options": [
+                "tt"
+              ],
+              "correctOption": "tt",
+              "explanation": "tt",
+              "points": 2
+            }
+          ],
+          "passingScore": 50,
+          "maxAttempts": 0
+        },
+        "optionalResources": [
+          "gg"
+        ]
       }
     ],
     "students": [
